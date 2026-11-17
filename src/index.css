@@ -1,0 +1,194 @@
+@import "tailwindcss";
+@import "./styles/tokens.css";
+
+/*
+ * Kit site theme. Colours are the live site's custom properties (src/styles/tokens.css, generated from the
+ * production CSS); this file only maps them to Tailwind utilities. Type scale, radii and the accent-word recipe
+ * are copied from the same stylesheet so the kit renders exactly like oneagency.com.
+ */
+@theme inline {
+  --color-ground: var(--ground);
+  --color-void: var(--void);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-band: var(--band);
+  --color-raised: var(--raised);
+  --color-edge: var(--edge);
+  --color-edge-soft: var(--edge-soft);
+  --color-edge-strong: var(--edge-strong);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-text-4: var(--text-4);
+  --color-rose: var(--rose);
+  --color-rose-deep: var(--rose-deep);
+  --color-lilac: var(--lilac);
+  --color-lilac-deep: var(--lilac-deep);
+  --color-on-accent: var(--on-accent);
+  --color-lavender: var(--lavender);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-pos: var(--pos);
+  --color-lavender-text: var(--lavender);
+  --color-form-copy: var(--form-copy);
+  /* Kit UI only (guideline do/don't marks), not brand colours. */
+  --color-do: var(--color-emerald-400);
+  --color-dont: var(--color-red-500);
+  --shadow-card: var(--v2-shadow);
+}
+
+/* Faces and type steps: the live site's --font-* and --step-* values. */
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-accent: "Metal", Georgia, serif;
+  --font-num: "Lato", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --text-step--1: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+  --text-step-0: clamp(1.0625rem, 1.03rem + 0.14vw, 1.125rem);
+  --text-step-1: clamp(1.125rem, 1.07rem + 0.22vw, 1.25rem);
+  --text-step-2: clamp(1.5rem, 1.3rem + 0.9vw, 1.875rem);
+  --text-step-3: clamp(2.125rem, 1.7rem + 1.75vw, 3rem);
+  --text-step-4: clamp(2.25rem, 1.6rem + 2.7vw, 3.8rem);
+  --text-step-small: 0.8125rem;
+  --leading-display: 1.04;
+  /* Site tracking values: eyebrow, award org line, award 'Awarded to', award tag. */
+  --tracking-eyebrow: 0.14em;
+  --tracking-caps: 0.16em;
+  --tracking-label: 0.28em;
+  --tracking-tag: 0.32em;
+  --text-step-num: clamp(2.1875rem, 2.07rem + 0.5vw, 2.5rem);
+  --radius-site: 14px;
+  --radius-site-sm: 8px;
+  /* Kit layout rhythm. */
+  --spacing-section: clamp(4.5rem, 3rem + 6vw, 9rem);
+  --spacing-gutter: clamp(24px, 4vw, 64px);
+  --spacing-touch: 44px;
+  --spacing-nav: 64px;
+  --spacing-nav-tabs: 52px;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    /* Site value: accent words run 1.27x the surrounding type. */
+    --accent-size: 1.27em;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* Anchors land below the sticky nav (one row on desktop, two below 1280px). */
+    scroll-padding-top: calc(var(--spacing-nav) + var(--spacing-nav-tabs) + 16px);
+    scroll-behavior: smooth;
+  }
+  @media (min-width: 1280px) {
+    html {
+      scroll-padding-top: calc(var(--spacing-nav) + 16px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--rose);
+    color: var(--on-accent);
+  }
+  /* Site value: one rose ring, 3px out. */
+  :focus-visible {
+    outline: 2px solid var(--rose);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /* The site's .serif accent word: Metal, the signature gradient clipped to the glyphs, a soft glow. */
+  .accent-word {
+    font-family: var(--font-accent);
+    font-style: normal;
+    font-weight: 400;
+    font-size: var(--accent-size);
+    letter-spacing: normal;
+    background: var(--accent-fill);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding-bottom: 0.12em;
+    padding-inline-end: 0.04em;
+    filter: var(--accent-glow);
+  }
+  .container-site {
+    width: 100%;
+    max-width: 1324px;
+    margin-inline: auto;
+    padding-inline: var(--spacing-gutter);
+  }
+  /* The site's .eyebrow: tracked caps in rose. */
+  .eyebrow {
+    font-size: var(--text-step-small);
+    font-weight: 600;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--rose);
+  }
+  /* The site's .stat-num: Lato 700, gradient filled, with the accent glow. */
+  .stat-num {
+    font-family: var(--font-num);
+    font-weight: 700;
+    line-height: 1.24;
+    background: linear-gradient(90deg, var(--rose), var(--lilac));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: var(--accent-glow);
+  }
+  /* The site's hero glow field: rose top-left, lilac bottom-right, on the ground. */
+  .glow-field {
+    background:
+      radial-gradient(72ch 44ch at 14% -6%, color-mix(in srgb, var(--rose) 42%, transparent), transparent 66%),
+      radial-gradient(76ch 50ch at 92% 96%, color-mix(in srgb, var(--lilac) 55%, transparent), transparent 72%),
+      var(--ground);
+  }
+  /* Transparency checkerboard behind alpha swatches. */
+  .checker {
+    background:
+      repeating-conic-gradient(var(--raised) 0% 25%, var(--surface) 0% 50%) 0 0 / 16px 16px;
+  }
+  /* A busy, photo-like field for the misuse example (stands in for a photo). */
+  .busy-field {
+    background:
+      radial-gradient(circle at 20% 30%, var(--paper) 0 8%, transparent 9%),
+      radial-gradient(circle at 70% 60%, var(--pos) 0 12%, transparent 13%),
+      radial-gradient(circle at 45% 80%, var(--lilac) 0 10%, transparent 11%),
+      repeating-linear-gradient(35deg, var(--text-2) 0 6px, var(--ink-3) 6px 14px, var(--rose) 14px 18px);
+  }
+  /* Thin scrollbars for horizontal strips. */
+  .scroll-strip {
+    scrollbar-width: thin;
+    scrollbar-color: var(--edge-strong) transparent;
+  }
+}
+
+/* The site's stat divider: a vertical gradient rule before a stat in a row. */
+@utility stat-divided {
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6%;
+    bottom: 6%;
+    width: 1px;
+    background: var(--stat-divider);
+  }
+}
