@@ -9,7 +9,7 @@ export function RampRow({ ramp }: { ramp: Ramp }) {
   const copy = useCopy()
   return (
     <div>
-      <p className="mb-2 font-mono text-step-small text-text-2">{ramp.base}</p>
+      <p className="mb-2 font-code text-step-small text-text-2">{ramp.base}</p>
       <ul className="grid grid-cols-5 overflow-hidden rounded-site border border-edge sm:grid-cols-10">
         {ramp.steps.map((step) => {
           const ink = readableOn(step.hex) === 'ink'
@@ -29,7 +29,7 @@ export function RampRow({ ramp }: { ramp: Ramp }) {
                   {step.isSiteValue && ' ●'}
                 </span>
                 {/* Full opacity: readableOn guarantees at least 4.5:1 only for the solid ink or paper colour. */}
-                <span className="font-mono">{step.hex.slice(1).toUpperCase()}</span>
+                <span className="font-code">{step.hex.slice(1).toUpperCase()}</span>
               </motion.button>
             </li>
           )

@@ -38,6 +38,7 @@ export function ButtonLink({ href, children, variant, size, download, external, 
       {...press}
     >
       {children}
+      {external && !rest['aria-label'] && <span className="sr-only"> (opens in a new tab)</span>}
     </motion.a>
   )
 }

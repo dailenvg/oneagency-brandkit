@@ -25,10 +25,9 @@ export function CopySection() {
   return (
     <Section
       id="copy"
-      index="08"
       eyebrow="Copy bank"
       title="Lines that are ready to use"
-      accent={[3]}
+      highlight={[3, 5]}
       lede="Headlines, taglines, CTAs, proof points and legal lines, each with where it comes from and when. Tap or click a line to copy it."
       actions={
         <>

@@ -53,6 +53,14 @@ export interface ComponentAlias {
   values: string[]
 }
 
+export interface StyleToken {
+  name: string
+  /** As written in tokens.css (a literal, or a color-mix of live tokens). */
+  value: string
+  hex: string
+  role: string
+}
+
 export interface RampStep {
   step: number
   name: string
@@ -1619,6 +1627,52 @@ export const COMPONENT_ALIASES: ComponentAlias[] = [
     "values": [
       "2px solid var(--rose)"
     ]
+  }
+]
+
+/** Derived, not on the live site (v1.1 style): highlight band, violet ground, light-ground accent. */
+export const STYLE_TOKENS: StyleToken[] = [
+  {
+    "name": "--kit-highlight",
+    "value": "color-mix(in srgb, var(--lilac) 40%, var(--ground))",
+    "hex": "#173a69",
+    "role": "Highlight band on dark grounds, white text on top. Reference sample #172C78 to #11306A."
+  },
+  {
+    "name": "--kit-highlight-light",
+    "value": "color-mix(in srgb, var(--lilac) 40%, var(--paper))",
+    "hex": "#afd1f9",
+    "role": "Highlight band on light grounds, ink text on top."
+  },
+  {
+    "name": "--kit-violet",
+    "value": "#2a004c",
+    "hex": "#2a004c",
+    "role": "Violet ground, top left (sampled from the reference ads)."
+  },
+  {
+    "name": "--kit-night",
+    "value": "#0e0f12",
+    "hex": "#0e0f12",
+    "role": "Near-black the violet ground runs into (sampled)."
+  },
+  {
+    "name": "--kit-accent-light-from",
+    "value": "#e0446b",
+    "hex": "#e0446b",
+    "role": "Accent gradient start on light grounds (hand-tuned rose, full chroma)."
+  },
+  {
+    "name": "--kit-accent-light-mid",
+    "value": "#a057d6",
+    "hex": "#a057d6",
+    "role": "Accent gradient midpoint on light grounds, for sRGB blending (keeps the middle violet, not grey)."
+  },
+  {
+    "name": "--kit-accent-light-to",
+    "value": "#2f7be6",
+    "hex": "#2f7be6",
+    "role": "Accent gradient end on light grounds (hand-tuned blue, full chroma)."
   }
 ]
 

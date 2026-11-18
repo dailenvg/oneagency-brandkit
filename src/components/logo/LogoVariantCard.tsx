@@ -1,7 +1,7 @@
 import { motion } from 'motion/react'
 import type { LogoAsset } from '../../data/logos'
 import { reveal } from '../../lib/motion'
-import { DownloadLink } from '../ui/DownloadLink'
+import { DownloadMenu } from '../ui/DownloadMenu'
 import { SmartImage } from '../ui/SmartImage'
 
 const onLight = (logo: LogoAsset) => logo.ground === '--paper'
@@ -11,7 +11,7 @@ export function LogoVariantCard({ logo }: { logo: LogoAsset }) {
   const { svg } = logo
   return (
     <motion.li variants={reveal} className="flex flex-col overflow-hidden rounded-site border border-edge bg-surface">
-      <div className={`grid aspect-video place-items-center p-8 ${onLight(logo) ? 'bg-paper' : 'bg-ground'}`}>
+      <div data-theme={onLight(logo) ? 'light' : 'dark'} className={`grid aspect-video place-items-center p-8 ${onLight(logo) ? 'bg-paper' : 'bg-ground'}`}>
         <SmartImage
           src={svg.url}
           alt={`${logo.lockupLabel}, ${logo.label}`}
@@ -22,18 +22,20 @@ export function LogoVariantCard({ logo }: { logo: LogoAsset }) {
           imgClassName="size-full"
         />
       </div>
-      <div className="flex flex-1 flex-col gap-3 p-5">
+      <div className="flex flex-1 items-start justify-between gap-3 p-5">
         <div>
-          {/* h3: these cards sit straight under the section's h2. */}
-          <h3 className="font-semibold text-text">{logo.label}</h3>
+          {/* h2: these cards sit straight under the view's h1. */}
+          <h2 className="font-semibold text-text">{logo.label}</h2>
           <p className="mt-1 text-step-small text-text-3">{logo.note}</p>
         </div>
-        <div className="mt-auto flex flex-wrap gap-2">
-          <DownloadLink url={svg.url} label="SVG" bytes={svg.bytes} />
-          {logo.pngs.map((png) => (
-            <DownloadLink key={png.url} url={png.url} label={`PNG ${png.scale}x`} bytes={png.bytes} />
-          ))}
-        </div>
+        <DownloadMenu
+          // "Stacked, On dark": the lockup's short name, without its "(primary, master layout)" aside.
+          title={`${logo.lockupLabel.replace(/\s*\(.*\)$/, '')}, ${logo.label}`}
+          files={[
+            { url: svg.url, label: 'SVG', bytes: svg.bytes },
+            ...logo.pngs.map((png) => ({ url: png.url, label: `PNG ${png.scale}x`, bytes: png.bytes })),
+          ]}
+        />
       </div>
     </motion.li>
   )

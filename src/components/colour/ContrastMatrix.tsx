@@ -43,7 +43,7 @@ export function ContrastMatrix() {
                 Text ↓ / Ground →
               </th>
               {grounds.map((g) => (
-                <th key={g} scope="col" className="min-w-24 bg-surface p-3 text-left font-mono font-medium whitespace-nowrap text-text-2">
+                <th key={g} scope="col" className="min-w-24 bg-surface p-3 text-left font-code font-medium whitespace-nowrap text-text-2">
                   {g}
                 </th>
               ))}
@@ -52,7 +52,7 @@ export function ContrastMatrix() {
           <tbody>
             {texts.map((t) => (
               <tr key={t} className="border-t border-edge">
-                <th scope="row" className="sticky left-0 z-10 bg-surface p-3 text-left font-mono font-medium whitespace-nowrap text-text-2">
+                <th scope="row" className="sticky left-0 z-10 bg-surface p-3 text-left font-code font-medium whitespace-nowrap text-text-2">
                   {t}
                 </th>
                 {grounds.map((g) => {

@@ -2,6 +2,7 @@ import { X } from '@phosphor-icons/react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useId, useRef, type KeyboardEvent, type ReactNode } from 'react'
 import { backdrop, panel, press } from '../../lib/motion'
+import { iconButtonClass } from './button-styles'
 
 interface LightboxProps {
   open: boolean
@@ -67,7 +68,7 @@ export function Lightbox({ open, onClose, title, children }: LightboxProps) {
             onKeyDown={onKeyDown}
             onClick={(e) => e.stopPropagation()}
             variants={panel}
-            className="flex max-h-full w-full max-w-6xl flex-col overflow-hidden rounded-site border border-edge bg-surface shadow-card outline-none"
+            className={`flex max-h-full w-full max-w-6xl flex-col overflow-hidden rounded-site border border-edge bg-surface shadow-card outline-none`}
           >
             <header className="flex items-center justify-between gap-4 border-b border-edge px-4 py-2 sm:px-6">
               <h2 id={titleId} className="truncate text-step-0 font-semibold">
@@ -78,10 +79,10 @@ export function Lightbox({ open, onClose, title, children }: LightboxProps) {
                 type="button"
                 onClick={onClose}
                 aria-label="Close"
-                className="grid size-touch shrink-0 place-items-center rounded-full text-text-2 transition-colors hover:bg-surface-2 hover:text-text"
+                className={iconButtonClass('ghost')}
                 {...press}
               >
-                <X className="size-5" aria-hidden />
+                <X aria-hidden />
               </motion.button>
             </header>
             {/* Keyboard-scrollable: true-size ads are wider than a phone. */}

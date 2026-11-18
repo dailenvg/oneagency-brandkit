@@ -24,7 +24,7 @@ function IconTile({ file }: { file: IconFile }) {
   const dims = formatSize(file.width, file.height)
   return (
     <motion.li variants={reveal} className="flex flex-col gap-3 rounded-site border border-edge bg-surface p-4">
-      <div className="grid h-28 place-items-center rounded-site-sm bg-ground">
+      <div data-theme="dark" className="grid h-28 place-items-center rounded-site-sm bg-ground">
         <SmartImage src={file.url} alt={`${KIND_LABEL[file.kind]}${dims ? `, ${dims}` : ''}`} width={size} height={size} style={{ width: size, height: size }} imgClassName="size-full" />
       </div>
       <p className="text-step-small">
@@ -63,7 +63,7 @@ function SocialTile({ file }: { file: IconFile }) {
 export function FaviconSet() {
   return (
     <div className="flex flex-col gap-4">
-      <Reveal as="ul" stagger className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <Reveal as="ul" stagger className="grid gap-4 min-[360px]:grid-cols-2 sm:grid-cols-4">
         {FAVICONS.map((f) => (
           <IconTile key={f.url} file={f} />
         ))}

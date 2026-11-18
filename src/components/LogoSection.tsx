@@ -27,7 +27,6 @@ export function LogoSection() {
   return (
     <Section
       id="logo"
-      index="01"
       eyebrow="Logo"
       title="The chrome ONE mark"
       accent={[1]}
@@ -53,11 +52,11 @@ export function LogoSection() {
 
         <div className="grid gap-12 lg:grid-cols-2">
           <div className="min-w-0">
-            <SubHeading title="Clear space" badge={<Badge tone="proposed">Proposed</Badge>} />
+            <SubHeading title="Clear space" badge={<Badge>Proposed</Badge>} />
             <ClearSpace />
           </div>
           <div className="min-w-0">
-            <SubHeading title="Minimum size" badge={<Badge tone="proposed">Proposed</Badge>}>
+            <SubHeading title="Minimum size" badge={<Badge>Proposed</Badge>}>
               Smallest on-screen width for each lockup, drawn at true pixel size.
             </SubHeading>
             <MinimumSizes />

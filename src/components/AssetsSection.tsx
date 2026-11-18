@@ -1,15 +1,14 @@
-import { DownloadSimple, WarningCircle } from '@phosphor-icons/react'
+import { ArrowClockwise, FileDashed, WarningCircle } from '@phosphor-icons/react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useMemo, useState } from 'react'
 import { ASSET_MANIFEST } from '../lib/assets'
-import { formatBytes } from '../lib/format'
-import { FULL_KIT_URL, type AssetGroupId } from '../lib/kit'
+import type { AssetGroupId } from '../lib/kit'
 import { AssetRow } from './assets/AssetRow'
 import { Section } from './layout/Section'
 import { Button } from './ui/Button'
-import { ButtonLink } from './ui/ButtonLink'
 import { EmptyState } from './ui/EmptyState'
 import { FilterTabs } from './ui/FilterTabs'
+import { FullKitButton } from './ui/FullKitButton'
 import { ZipButton } from './ui/ZipButton'
 
 type Filter = AssetGroupId | 'all'
@@ -30,9 +29,19 @@ export function AssetsSection() {
 
   if (!manifest) {
     return (
-      <Section id="assets" index="10" eyebrow="Assets" title="Every file, in one place" accent={[1]}>
-        <EmptyState icon={WarningCircle} tone="error" title="The asset list has not been generated" action={<code className="font-mono text-step-small text-text-2">npm run kit:zips</code>}>
-          The list and the ZIPs are built from the files on disk. Run the command below, then reload.
+      <Section id="assets" eyebrow="Assets" title="Every file, in one place" highlight={[2, 4]}>
+        <EmptyState
+          icon={WarningCircle}
+          tone="error"
+          title="The file list did not load"
+          action={
+            <Button variant="secondary" onClick={() => window.location.reload()}>
+              <ArrowClockwise className="size-5" aria-hidden />
+              Reload
+            </Button>
+          }
+        >
+          Reload the page. If the list is still missing, the kit is being updated; every view still has its own downloads.
         </EmptyState>
       </Section>
     )
@@ -44,18 +53,11 @@ export function AssetsSection() {
   return (
     <Section
       id="assets"
-      index="10"
       eyebrow="Assets"
       title="Every file, in one place"
-      accent={[1]}
+      highlight={[2, 4]}
       lede={`${manifest.files.length} files across ${manifest.groups.filter((g) => g.count).length} groups. Download one at a time, a group as a ZIP, or the full kit.`}
-      actions={
-        <ButtonLink href={FULL_KIT_URL} download aria-label={`Download full kit, ZIP, ${formatBytes(manifest.full.bytes)}`}>
-          <DownloadSimple className="size-5" aria-hidden />
-          Download full kit
-          <span className="font-normal opacity-75">{formatBytes(manifest.full.bytes)}</span>
-        </ButtonLink>
-      }
+      actions={<FullKitButton />}
     >
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -84,8 +86,8 @@ export function AssetsSection() {
               </AnimatePresence>
             </motion.ul>
           ) : (
-            <EmptyState icon={WarningCircle} title={`No ${group?.label.toLowerCase() ?? ''} files yet`}>
-              This group fills in when its files land in public/kit/{filter}/. Rerun <code className="font-mono">npm run kit:zips</code> afterwards.
+            <EmptyState icon={FileDashed} title={`No ${group?.label.toLowerCase() ?? ''} files yet`}>
+              They appear here as soon as they are published. Pick another group, or download the full kit.
             </EmptyState>
           )}
         </div>
@@ -96,7 +98,7 @@ export function AssetsSection() {
           </Button>
         )}
         <p className="text-step-small text-text-3">
-          List generated {manifest.generatedAt.slice(0, 10)} from the files in public/kit. File names follow one-agency_[asset]_[variant]_[size].[ext].
+          List updated {manifest.generatedAt.slice(0, 10)}. File names follow one-agency_[asset]_[variant]_[size].[ext].
         </p>
       </div>
     </Section>

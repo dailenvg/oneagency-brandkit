@@ -17,7 +17,6 @@ export function MotionSection() {
   return (
     <Section
       id="motion"
-      index="06"
       eyebrow="Motion"
       title="Quick, confident, and it ends on a result"
       accent={[7]}
@@ -33,7 +32,7 @@ export function MotionSection() {
         <Reveal as="ol" stagger className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
           {PRINCIPLES.map((p, i) => (
             <motion.li key={p.title} variants={reveal} className="flex flex-col gap-2 rounded-site border border-edge bg-surface p-5">
-              <span className="font-num text-step-small text-rose">0{i + 1}</span>
+              <span className="font-num text-step-small text-accent">0{i + 1}</span>
               <span className="font-semibold text-text">{p.title}</span>
               <span className="text-step-small text-text-2">{p.body}</span>
             </motion.li>
@@ -52,7 +51,7 @@ export function MotionSection() {
         </div>
 
         <SourceNote title="For HTML5 ads">
-          <code className="font-mono">one-motion.js</code> runs the same moves without a framework, as pure functions of time: <code className="font-mono">ad.seek(t)</code> renders
+          <code className="font-code">one-motion.js</code> runs the same moves without a framework, as pure functions of time: <code className="font-code">ad.seek(t)</code> renders
           any frame exactly, which is how the animated ads below are exported. Under prefers-reduced-motion the player shows the final frame.
         </SourceNote>
       </div>

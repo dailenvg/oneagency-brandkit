@@ -1,5 +1,6 @@
 import { ArrowsOut } from '@phosphor-icons/react'
 import { motion } from 'motion/react'
+import { adDescription } from '../../data/visitor-descriptions'
 import { displaySrc, type AdItem } from '../../lib/ads'
 import { formatSize } from '../../lib/format'
 import { reveal } from '../../lib/motion'
@@ -25,6 +26,7 @@ const CAPTION_MIN = 192
  */
 export function AdFrame({ item, fit, onOpen }: AdFrameProps) {
   const src = displaySrc(item.files)!
+  const description = adDescription(item)
   const fitWidth = Math.min(item.width, FIT_W, Math.round((FIT_H * item.width) / item.height))
   // Fitted: the box keeps the ad's aspect ratio so the skeleton and the error state hold their space.
   const box = fit ? { width: fitWidth, maxWidth: '100%', aspectRatio: `${item.width} / ${item.height}` } : { width: item.width, height: item.height }
@@ -62,7 +64,7 @@ export function AdFrame({ item, fit, onOpen }: AdFrameProps) {
           <span className="font-num text-step-small text-text-3">{formatSize(item.width, item.height)}</span>
           {item.channel === 'other' && item.channelLabel && <span className="text-step-small text-text-3">{item.channelLabel}</span>}
         </p>
-        {item.notes && <p className="max-w-md text-step-small text-text-2">{item.notes}</p>}
+        {description && <p className="max-w-md text-step-small text-text-2">{description}</p>}
         <AdFileLinks item={item} />
       </figcaption>
     </motion.figure>

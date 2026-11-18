@@ -1,9 +1,8 @@
 import { ArrowUpRight } from '@phosphor-icons/react'
 import { motion } from 'motion/react'
 import type { Face } from '../../data/type'
-import { assetFor } from '../../lib/assets'
 import { reveal } from '../../lib/motion'
-import { DownloadLink } from '../ui/DownloadLink'
+import { DownloadMenu } from '../ui/DownloadMenu'
 
 const WEIGHT_NAMES: Record<number, string> = { 400: 'Regular', 500: 'Medium', 600: 'Semibold', 700: 'Bold' }
 
@@ -12,8 +11,8 @@ export function FaceSpecimen({ face }: { face: Face }) {
   return (
     <motion.article variants={reveal} className="flex flex-col gap-6 rounded-site border border-edge bg-surface p-6 sm:p-8">
       <header className="flex flex-wrap items-baseline justify-between gap-3">
-        <h3 className={`text-step-3 ${face.id === 'metal' ? 'accent-word' : 'font-bold'} ${face.className}`}>{face.family}</h3>
-        <code className="font-mono text-step-small text-text-3">{face.cssVar}</code>
+        <h2 className={`text-step-3 ${face.id === 'metal' ? 'accent-word' : 'font-bold'} ${face.className}`}>{face.family}</h2>
+        <code className="font-code text-step-small text-text-3">{face.cssVar}</code>
       </header>
       <p className="text-step--1 text-text-2">{face.role}</p>
       <ul className="flex flex-col gap-3 border-y border-edge py-5">
@@ -28,19 +27,17 @@ export function FaceSpecimen({ face }: { face: Face }) {
           </li>
         ))}
       </ul>
-      <div className="flex flex-wrap gap-2">
-        {face.files.map((f) => (
-          <DownloadLink key={f.url} url={f.url} label={f.label} bytes={assetFor(f.url)?.bytes} />
-        ))}
+      <div className="flex items-center justify-between gap-4">
+        <p className="flex flex-wrap gap-x-4 gap-y-2 text-step-small">
+          <a href={face.page} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-touch items-center gap-1 font-semibold text-accent hover:text-text">
+            {face.family} on Google Fonts <ArrowUpRight className="size-3.5" aria-hidden />
+          </a>
+          <a href={face.licence} className="inline-flex min-h-touch items-center gap-1 font-semibold text-accent hover:text-text">
+            SIL Open Font License 1.1 (TXT)
+          </a>
+        </p>
+        <DownloadMenu title={`${face.family} font files`} files={face.files.map((f) => ({ url: f.url, label: f.label }))} />
       </div>
-      <p className="flex flex-wrap gap-x-4 gap-y-2 text-step-small">
-        <a href={face.page} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-touch items-center gap-1 font-semibold text-rose hover:text-text">
-          {face.family} on Google Fonts <ArrowUpRight className="size-3.5" aria-hidden />
-        </a>
-        <a href={face.licence} className="inline-flex min-h-touch items-center gap-1 font-semibold text-rose hover:text-text">
-          SIL Open Font License 1.1 (TXT)
-        </a>
-      </p>
     </motion.article>
   )
 }

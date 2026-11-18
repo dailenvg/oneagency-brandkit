@@ -45,7 +45,7 @@ export function AdTextStyles() {
                 <span className="block font-semibold text-text">{s.label}</span>
                 <span className="mt-1 block min-w-48 font-normal text-text-3">{s.note}</span>
               </th>
-              <td className="min-w-56 bg-ground p-3">
+              <td data-theme="dark" className="min-w-56 bg-ground p-3">
                 <Sample s={s} />
               </td>
               <td className="p-3 whitespace-nowrap text-text-2">
@@ -55,7 +55,7 @@ export function AdTextStyles() {
               <td className="p-3 font-num text-step-0 whitespace-nowrap text-text">{s.banner} px</td>
               <td className="p-3 font-num whitespace-nowrap text-text-2">{s.lineHeight}</td>
               <td className="p-3 font-num whitespace-nowrap text-text-2">{s.tracking} em</td>
-              <td className="p-3 font-mono whitespace-nowrap text-text-2">{s.colour}</td>
+              <td className="p-3 font-code whitespace-nowrap text-text-2">{s.colour}</td>
             </tr>
           ))}
         </tbody>

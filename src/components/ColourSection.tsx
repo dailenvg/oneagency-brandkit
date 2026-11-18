@@ -4,6 +4,7 @@ import { ACCENT_RULES, GROUP_LABELS, GROUP_ORDER } from '../data/colour-rules'
 import { DERIVED_RAMPS, RAMPS, TOKEN_SOURCE, TOKENS } from '../data/tokens'
 import { reveal } from '../lib/motion'
 import { ContrastMatrix } from './colour/ContrastMatrix'
+import { LightThemeTokens } from './colour/LightThemeTokens'
 import { RampRow } from './colour/RampRow'
 import { Swatch } from './colour/Swatch'
 import { Section } from './layout/Section'
@@ -22,11 +23,9 @@ export function ColourSection() {
   return (
     <Section
       id="colour"
-      index="02"
       eyebrow="Colour"
       title="Night-navy, rose and the site blue"
       accent={[5]}
-      band
       lede="Value for value from the live site's production CSS, with the site's own token names. Tap or click any value to copy it."
       actions={
         <>
@@ -53,7 +52,7 @@ export function ColourSection() {
         })}
 
         <div>
-          <SubHeading title="Tints and shades" badge={<Badge tone="derived">{DERIVED_RAMPS.label}</Badge>}>
+          <SubHeading title="Tints and shades" badge={<Badge>{DERIVED_RAMPS.label}</Badge>}>
             {DERIVED_RAMPS.method} ● marks the site value. Tap or click a step to copy its HEX.
           </SubHeading>
           <Reveal className="flex flex-col gap-6">
@@ -69,11 +68,11 @@ export function ColourSection() {
         </div>
 
         <div>
-          <SubHeading title="Accent rules for ads" badge={<Badge tone="proposed">Proposed</Badge>} />
+          <SubHeading title="Accent rules for ads" badge={<Badge>Proposed</Badge>} />
           <Reveal as="ul" stagger className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {ACCENT_RULES.map((r) => (
               <motion.li key={r.rule} variants={reveal} className="flex gap-3 rounded-site border border-edge bg-surface p-5">
-                <CheckCircle className="mt-0.5 size-5 shrink-0 text-rose" aria-hidden />
+                <CheckCircle className="mt-0.5 size-5 shrink-0 text-accent" aria-hidden />
                 <div>
                   <p className="font-semibold text-text">{r.rule}</p>
                   <p className="mt-1 text-step-small text-text-2">{r.detail}</p>
@@ -81,6 +80,14 @@ export function ColourSection() {
               </motion.li>
             ))}
           </Reveal>
+        </div>
+
+        <div>
+          <SubHeading title="Light theme for this hub" badge={<Badge>Derived: the live site is dark-only</Badge>}>
+            The sun and moon switch swaps each role from its live dark token to a paper-and-ink one. Rose and lilac are too light for text on paper, so
+            text uses their derived 700 steps, which pass AA on every light ground.
+          </SubHeading>
+          <LightThemeTokens />
         </div>
 
         <SourceNote>

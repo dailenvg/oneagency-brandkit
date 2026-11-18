@@ -42,7 +42,7 @@ export function CopyLineItem({ line, ref }: CopyLineItemProps) {
           </span>
           {line.note && <span className="text-step-small text-text-2">{line.note}</span>}
         </span>
-        <span className="grid size-touch shrink-0 place-items-center rounded-full border border-edge text-text-3 transition-colors group-hover:border-rose group-hover:text-rose" aria-hidden>
+        <span className="grid size-touch shrink-0 place-items-center rounded-full border border-edge text-text-3 transition-colors group-hover:border-accent group-hover:text-accent" aria-hidden>
           <AnimatePresence mode="wait" initial={false}>
             <motion.span key={done ? 'done' : 'copy'} variants={fade} initial="hidden" animate="show" exit="exit">
               {done ? <Check className="size-5 text-do" /> : <Copy className="size-5" />}

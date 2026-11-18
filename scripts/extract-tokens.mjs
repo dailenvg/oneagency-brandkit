@@ -8,8 +8,9 @@
  *   public/kit/colour/one-agency_tokens_web.json    the same data as JSON
  *   src/styles/tokens.css                           the same CSS, imported by the kit site
  *
- * Every token value is copied verbatim from the live CSS. Tints and shades are the only computed colours and are
- * written to a separate, clearly labelled "derived" block that does not exist on the live site.
+ * Every token value is copied verbatim from the live CSS. Two separate, clearly labelled "derived" blocks hold the
+ * only colours that are not on the live site: the tint/shade ramps, and the v1.1 style tokens (the highlight band and
+ * the violet ground sampled from the reference ads).
  *
  * Usage: node scripts/extract-tokens.mjs [path/to/home.css]
  * Default source: design/source/home.css (a snapshot of the live bundle, see README).
@@ -106,6 +107,7 @@ const tokens = buildTokens()
 const effects = Object.entries(EFFECTS).map(([name, role]) => ({ name, cssVar: `var(${name})`, value: single(name), role }))
 const componentAliases = COMPONENT_ALIASES.map((name) => ({ name, values: [...new Set(decls.filter((d) => d.prop === name).map((d) => d.value))] }))
 const ramps = buildRamps()
+const styleTokens = buildStyleTokens()
 const contrast = buildContrast()
 const literals = buildLiterals()
 
@@ -117,6 +119,11 @@ const data = {
   effects,
   componentAliases,
   derived: { label: 'Derived, not on the live site', method: 'OKLab mix of the site value toward --paper (tints) or --ink (shades). Rose and lilac: step 500 is the site value. Ground: step 900 is the site value.', ramps },
+  derivedStyle: {
+    label: 'Derived, not on the live site (v1.1 style)',
+    method: 'Highlight band: CSS color-mix in sRGB of the live tokens (hex shown for reference). Violet ground: sampled from the reference ads. Light accent: hand-tuned rose and blue that clear 3:1 on every light ground.',
+    tokens: styleTokens,
+  },
   contrast,
   literals,
 }
@@ -276,6 +283,35 @@ function gradientStops(value) {
   return [...value.matchAll(/var\((--[\w-]+)\)|#[0-9a-f]{3,8}\b|rgba?\([^)]*\)|transparent/gi)].map((m) => (m[1] ? `${m[1]} ${toHex(parseColour(single(m[1])))}` : m[0]))
 }
 
+/* ---------------------------------------------------------------- derived v1.1 style tokens */
+
+/** CSS color-mix(in srgb, a k, b): straight interpolation of the gamma-encoded channels. */
+function mixSrgb(a, b, k) {
+  const [x, y] = [parseColour(a), parseColour(b)]
+  return toHex({ r: x.r * k + y.r * (1 - k), g: x.g * k + y.g * (1 - k), b: x.b * k + y.b * (1 - k) })
+}
+
+function buildStyleTokens() {
+  const hex = (name) => tokens.find((t) => t.name === name).hex
+  const mix = (name, role, amount, into) => ({
+    name,
+    value: `color-mix(in srgb, var(--lilac) ${amount * 100}%, var(${into}))`,
+    hex: mixSrgb(hex('--lilac'), hex(into), amount),
+    role,
+  })
+  return [
+    mix('--kit-highlight', 'Highlight band on dark grounds, white text on top. Reference sample #172C78 to #11306A.', 0.4, '--ground'),
+    mix('--kit-highlight-light', 'Highlight band on light grounds, ink text on top.', 0.4, '--paper'),
+    { name: '--kit-violet', value: '#2a004c', hex: '#2a004c', role: 'Violet ground, top left (sampled from the reference ads).' },
+    { name: '--kit-night', value: '#0e0f12', hex: '#0e0f12', role: 'Near-black the violet ground runs into (sampled).' },
+    // Rose and lilac are too pale on paper and the 700 steps read muddy as a fill: these keep both hues at full chroma
+    // and clear 3:1 on every light ground (rose 3.67 to 4.03, blue 3.75 to 4.12, lavender to paper).
+    { name: '--kit-accent-light-from', value: '#e0446b', hex: '#e0446b', role: 'Accent gradient start on light grounds (hand-tuned rose, full chroma).' },
+    { name: '--kit-accent-light-mid', value: '#a057d6', hex: '#a057d6', role: 'Accent gradient midpoint on light grounds, for sRGB blending (keeps the middle violet, not grey).' },
+    { name: '--kit-accent-light-to', value: '#2f7be6', hex: '#2f7be6', role: 'Accent gradient end on light grounds (hand-tuned blue, full chroma).' },
+  ]
+}
+
 /* ---------------------------------------------------------------- derived ramps */
 
 function buildRamps() {
@@ -383,6 +419,14 @@ ${fx}
 :root {
 ${derived}
 }
+
+/*
+ * DERIVED, NOT ON THE LIVE SITE (v1.1 style).
+ * ${data.derivedStyle.method}
+ */
+:root {
+${styleTokens.map((t) => `  ${t.name}: ${t.value};${t.value === t.hex ? '' : ` /* ${t.hex} */`}`).join('\n')}
+}
 `
 }
 
@@ -443,6 +487,14 @@ export interface ComponentAlias {
   values: string[]
 }
 
+export interface StyleToken {
+  name: string
+  /** As written in tokens.css (a literal, or a color-mix of live tokens). */
+  value: string
+  hex: string
+  role: string
+}
+
 export interface RampStep {
   step: number
   name: string
@@ -485,6 +537,9 @@ export const TOKENS: ColourToken[] = ${json(tokens)}
 export const EFFECT_TOKENS: EffectToken[] = ${json(effects)}
 
 export const COMPONENT_ALIASES: ComponentAlias[] = ${json(componentAliases)}
+
+/** Derived, not on the live site (v1.1 style): highlight band, violet ground, light-ground accent. */
+export const STYLE_TOKENS: StyleToken[] = ${json(data.derivedStyle.tokens)}
 
 /** Derived, not on the live site. */
 export const DERIVED_RAMPS = ${json({ label: data.derived.label, method: data.derived.method })} as const

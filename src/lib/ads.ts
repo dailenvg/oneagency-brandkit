@@ -4,6 +4,8 @@
  * not validate is skipped and counted, never thrown.
  */
 
+import { httpUrl, isObject, kitPath, size, text } from './manifest'
+
 export type AdGroup = 'template' | 'sample' | 'imagery'
 
 export type AdChannel = 'social' | 'carousel' | 'linkedin' | 'google-display' | 'web-banners' | 'other'
@@ -80,27 +82,6 @@ const GROUPS: AdGroup[] = ['template', 'sample', 'imagery']
 
 /** Optional at build time: import.meta.glob returns an empty object when the file does not exist yet. */
 const raw = import.meta.glob<unknown>('../data/ads.generated.json', { eager: true, import: 'default' })
-
-type Json = Record<string, unknown>
-
-const isObject = (v: unknown): v is Json => typeof v === 'object' && v !== null && !Array.isArray(v)
-const text = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : null)
-const size = (v: unknown) => {
-  const n = typeof v === 'string' ? Number.parseFloat(v) : v
-  return typeof n === 'number' && Number.isFinite(n) && n > 0 ? Math.round(n) : null
-}
-const httpUrl = (v: unknown) => {
-  const s = text(v)
-  return s && /^https?:\/\//.test(s) ? s : null
-}
-
-/** Accepts "/kit/...", "kit/..." and "public/kit/..."; anything else is dropped. */
-export function kitPath(v: unknown): string | null {
-  const s = text(v)
-  if (!s) return null
-  const path = s.replace(/^\.?\/?(public\/)?/, '/')
-  return path.startsWith('/kit/') ? path : null
-}
 
 export function normaliseChannel(v: unknown): AdChannel {
   const s = (text(v) ?? '').toLowerCase()

@@ -101,3 +101,17 @@
   --kit-ground-800: #080e1d;
   --kit-ground-900: #01030f; /* = --ground */
 }
+
+/*
+ * DERIVED, NOT ON THE LIVE SITE (v1.1 style).
+ * Highlight band: CSS color-mix in sRGB of the live tokens (hex shown for reference). Violet ground: sampled from the reference ads. Light accent: hand-tuned rose and blue that clear 3:1 on every light ground.
+ */
+:root {
+  --kit-highlight: color-mix(in srgb, var(--lilac) 40%, var(--ground)); /* #173a69 */
+  --kit-highlight-light: color-mix(in srgb, var(--lilac) 40%, var(--paper)); /* #afd1f9 */
+  --kit-violet: #2a004c;
+  --kit-night: #0e0f12;
+  --kit-accent-light-from: #e0446b;
+  --kit-accent-light-mid: #a057d6;
+  --kit-accent-light-to: #2f7be6;
+}

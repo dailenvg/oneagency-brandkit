@@ -2,6 +2,7 @@ import { DownloadSimple } from '@phosphor-icons/react'
 import { motion } from 'motion/react'
 import { press } from '../../lib/motion'
 import { fileName, formatBytes } from '../../lib/format'
+import { buttonClass } from './button-styles'
 
 interface DownloadLinkProps {
   url: string
@@ -19,10 +20,10 @@ export function DownloadLink({ url, label, bytes, className }: DownloadLinkProps
       download
       // Visible label first (WCAG 2.5.3 label in name), then the exact file and size.
       aria-label={`${label}${bytes ? ` ${formatBytes(bytes)}` : ''}, download ${fileName(url)}`}
-      className={`inline-flex min-h-touch items-center gap-1.5 rounded-full border border-edge bg-surface px-3.5 text-step-small font-semibold text-text transition-colors hover:border-rose hover:text-rose active:bg-surface-2 ${className ?? ''}`}
+      className={buttonClass('quiet', 'sm', className)}
       {...press}
     >
-      <DownloadSimple className="size-4 shrink-0" aria-hidden />
+      <DownloadSimple aria-hidden />
       {label}
       {bytes ? <span className="font-normal text-text-3">{formatBytes(bytes)}</span> : null}
     </motion.a>

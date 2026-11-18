@@ -1,24 +1,24 @@
 import { IconContext } from '@phosphor-icons/react'
 import { MotionConfig } from 'motion/react'
-import { lazy, Suspense } from 'react'
-import { Hero } from './components/Hero'
-import { Footer } from './components/layout/Footer'
-import { HashScroll } from './components/layout/HashScroll'
-import { Nav } from './components/layout/Nav'
-import { SectionsSkeleton } from './components/layout/SectionsSkeleton'
-import { LogoSection } from './components/LogoSection'
+import type { MouseEvent } from 'react'
+import { AppShell } from './components/layout/AppShell'
 import { ToastProvider } from './components/ui/ToastProvider'
+import { parseHash } from './lib/router'
+import { subAnchorId } from './lib/views'
 
-/** Everything below the logo section is code-split; all chunks start loading on mount so anchors resolve quickly. */
-const ColourSection = lazy(() => import('./components/ColourSection').then((m) => ({ default: m.ColourSection })))
-const TypeSection = lazy(() => import('./components/TypeSection').then((m) => ({ default: m.TypeSection })))
-const ElementsSection = lazy(() => import('./components/ElementsSection').then((m) => ({ default: m.ElementsSection })))
-const ImagerySection = lazy(() => import('./components/ImagerySection').then((m) => ({ default: m.ImagerySection })))
-const MotionSection = lazy(() => import('./components/MotionSection').then((m) => ({ default: m.MotionSection })))
-const VoiceSection = lazy(() => import('./components/VoiceSection').then((m) => ({ default: m.VoiceSection })))
-const CopySection = lazy(() => import('./components/CopySection').then((m) => ({ default: m.CopySection })))
-const AdsSection = lazy(() => import('./components/AdsSection').then((m) => ({ default: m.AdsSection })))
-const AssetsSection = lazy(() => import('./components/AssetsSection').then((m) => ({ default: m.AssetsSection })))
+/**
+ * Focuses the current subsection's heading when the address names one (#/logo/clear-space), else the view's title
+ * (its h1 is script-focusable), else the main region, without touching the hash, which drives the routes. Screen
+ * readers start where a navigation lands.
+ */
+function skipToMain(e: MouseEvent) {
+  e.preventDefault()
+  const { route } = parseHash(window.location.hash)
+  const sub = route.view !== 'not-found' && route.sub ? document.getElementById(subAnchorId(route.view, route.sub)) : null
+  const target = sub ?? document.querySelector<HTMLElement>('#main h1[tabindex="-1"]') ?? document.getElementById('main')
+  target?.focus({ preventScroll: true })
+  target?.scrollIntoView({ block: 'start' })
+}
 
 export default function App() {
   return (
@@ -27,28 +27,12 @@ export default function App() {
         <ToastProvider>
           <a
             href="#main"
+            onClick={skipToMain}
             className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-90 focus:rounded-full focus:bg-rose focus:px-4 focus:py-2 focus:font-semibold focus:text-on-accent"
           >
             Skip to content
           </a>
-          <Nav />
-          <main id="main" tabIndex={-1} className="outline-none">
-            <Hero />
-            <LogoSection />
-            <Suspense fallback={<SectionsSkeleton />}>
-              <ColourSection />
-              <TypeSection />
-              <ElementsSection />
-              <ImagerySection />
-              <MotionSection />
-              <VoiceSection />
-              <CopySection />
-              <AdsSection />
-              <AssetsSection />
-              <HashScroll />
-            </Suspense>
-          </main>
-          <Footer />
+          <AppShell />
         </ToastProvider>
       </IconContext.Provider>
     </MotionConfig>

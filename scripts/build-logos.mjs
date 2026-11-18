@@ -14,6 +14,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium } from 'playwright'
 import { luminance, mixOklab, parseColour, toHex } from './lib/colour.mjs'
+import { KIT } from '../src/lib/kit.ts'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = `${ROOT}/public/kit/logos`
@@ -292,7 +293,7 @@ async function writeSocial(stacked) {
     <div style="width:1200px;height:630px;background:${GROUND};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;font-family:Geist,sans-serif">
       ${imgTag(stacked.svg, ogW, ogH)}
       <div style="width:200px;height:6px;border-radius:6px;background:${BAR}"></div>
-      <div style="color:${TEXT_2};font-size:30px;font-weight:500;letter-spacing:-0.01em">Brand kit v1.0 · 2026-11-17</div>
+      <div style="color:${TEXT_2};font-size:30px;font-weight:500;letter-spacing:-0.01em">Brand kit v${KIT.version} · ${KIT.updated}</div>
     </div>`
   out.push({ kind: 'og', width: 1200, height: 630, ...save('social/one-agency_logo_og-image_1200x630.png', await shoot(og, 1200, 630)) })
   return out

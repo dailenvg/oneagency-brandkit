@@ -20,7 +20,7 @@ export function AssetRow({ asset, ref }: AssetRowProps) {
       <AssetThumb asset={asset} />
       <div className="min-w-0 flex-1">
         {/* Two lines, breaking anywhere: long file names stay readable on phones, where a title tooltip never shows. */}
-        <p className="line-clamp-2 font-mono text-step-small break-all text-text" title={asset.name}>
+        <p className="line-clamp-2 font-code text-step-small break-all text-text" title={asset.name}>
           {asset.name}
         </p>
         <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-step-small text-text-3">

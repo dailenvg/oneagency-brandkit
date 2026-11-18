@@ -60,6 +60,10 @@ export const duration = {
   haloScale: 3.5,
   /** Final still: the last beat of an ad holds dead still this long. */
   hold: 4,
+  /** Particle stream drift: one cycle when it first comes into view, then it holds (brand rule: play once, then hold). */
+  drift: 4.8,
+  /** A staggered set: the last child has landed by this point, however many children there are. */
+  cascade: 0.8,
 } as const
 
 /** Cubic-bezier fallbacks for CSS and for tweens where a function ease is not accepted. */
@@ -85,6 +89,12 @@ export const stagger = {
   /** The live site's --v2-stagger (cards, list items). */
   children: 0.1,
 } as const
+
+/**
+ * Seconds between `count` staggered children (each moving for duration.component), so the last one lands within
+ * duration.cascade: the site's --v2-stagger for short sets, tighter for long ones.
+ */
+export const cappedStagger = (count: number) => (count > 1 ? Math.min(stagger.children, (duration.cascade - duration.component) / (count - 1)) : stagger.children)
 
 /** Pixels, degrees and scales the moves travel. */
 export const distance = {
@@ -174,11 +184,11 @@ export const fade: Variants = {
   exit: { opacity: 0, transition: { duration: duration.micro, ease: ease.outCubic } },
 }
 
-/** Page transition for the kit site (template-level AnimatePresence, mode="wait"). */
+/** View transition for the hub (AnimatePresence mode="wait" around the routed view): the site's own curve. */
 export const page: Variants = {
   hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: duration.page, ease: ease.outCubic } },
-  exit: { opacity: 0, y: -8, transition: { duration: duration.out, ease: easeInQuad } },
+  show: { opacity: 1, y: 0, transition: { duration: duration.page, ease: ease.site } },
+  exit: { opacity: 0, y: -8, transition: { duration: duration.out, ease: ease.inQuad } },
 }
 
 /** Scroll reveal for section content: a short rise and fade, upward like the brand moves. */
@@ -214,6 +224,37 @@ export const panel: Variants = {
   show: { opacity: 1, scale: 1, y: 0, transition: spring.soft },
   exit: { opacity: 0, scale: 0.98, y: 8, transition: { duration: duration.micro, ease: easeInQuad } },
 }
+
+/** Dropdown menu (downloads): grows from its button on the snappy spring, leaves on a quick tween. */
+export const popover: Variants = {
+  hidden: { opacity: 0, scale: 0.95, y: -4 },
+  show: { opacity: 1, scale: 1, y: 0, transition: spring.snappy },
+  exit: { opacity: 0, scale: 0.97, y: -4, transition: { duration: duration.micro, ease: easeInQuad } },
+}
+
+/** Navigation drawer (phones and tablets): slides in from the left on the layout spring, leaves on a quick tween. */
+export const drawer: Variants = {
+  hidden: { x: '-100%' },
+  show: { x: 0, transition: spring.layout },
+  exit: { x: '-100%', transition: { duration: duration.component, ease: ease.inOutCubic } },
+}
+
+/** Icon swap (theme switch): the outgoing icon turns away, the new one turns in on the snappy spring. */
+export const iconSwap: Variants = {
+  hidden: { opacity: 0, rotate: -90, scale: 0.6 },
+  show: { opacity: 1, rotate: 0, scale: 1, transition: spring.snappy },
+  exit: { opacity: 0, rotate: 90, scale: 0.6, transition: { duration: duration.micro, ease: easeInQuad } },
+}
+
+/** Accordion body: height on the soft spring, opacity on a short tween. */
+export const collapse: Variants = {
+  hidden: { height: 0, opacity: 0 },
+  show: { height: 'auto', opacity: 1, transition: { height: spring.soft, opacity: { duration: duration.component, ease: ease.outCubic } } },
+  exit: { height: 0, opacity: 0, transition: { duration: duration.micro, ease: easeInQuad } },
+}
+
+/** Highlight band wipe, left to right behind the words (the gradient wipe's curve and length). */
+export const highlightWipe = { duration: duration.wipe, ease: ease.inOutCubic } as const
 
 /**
  * Brand intro cues (seconds from start): the film's brand scene, compressed for the web. The logo scales in, the
