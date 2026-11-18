@@ -19,7 +19,7 @@ export function ClearSpace() {
 
   return (
     <figure className="flex flex-col gap-4">
-      <div className="rounded-site border border-edge bg-ground p-6 sm:p-10">
+      <div data-theme="dark" className="rounded-site border border-edge bg-ground p-6 sm:p-10">
         <svg viewBox={`${-pad * 0.6} ${-pad * 0.2} ${vw + pad * 0.8} ${vh + pad * 0.4}`} className="h-auto w-full" role="img" aria-label="Clear space: half the height of the O on every side of the logo.">
           <rect x={0} y={0} width={vw} height={vh} fill="none" strokeDasharray="10 8" strokeWidth={2} style={{ stroke: 'var(--lilac)' }} />
           {corners.map(([x, y]) => (

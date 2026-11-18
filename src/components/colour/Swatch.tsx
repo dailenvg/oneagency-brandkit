@@ -19,7 +19,7 @@ export function Swatch({ token }: { token: ColourToken }) {
       </div>
       <div className="flex flex-1 flex-col gap-3 p-4">
         <div>
-          <h4 className="font-mono text-step--1 font-semibold text-text">{token.name}</h4>
+          <h3 className="font-code text-step--1 font-semibold text-text">{token.name}</h3>
           <p className="mt-1 text-step-small text-text-3">{token.role}</p>
         </div>
         <div className="mt-auto flex flex-col gap-1.5">

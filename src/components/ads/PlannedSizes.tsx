@@ -12,7 +12,7 @@ export function PlannedSizes() {
     <div className="flex flex-col gap-6">
       {CHANNELS.filter((c) => c.id !== 'other').map((c) => (
         <div key={c.id}>
-          <h4 className="mb-3 text-step-small font-semibold text-text-2">{c.label}</h4>
+          <h3 className="mb-3 text-step-small font-semibold text-text-2">{c.label}</h3>
           <ul className="flex flex-wrap items-end gap-4">
             {PLANNED_SIZES[c.id as keyof typeof PLANNED_SIZES].map(([w, h]) => {
               const k = MAX_SIDE / Math.max(w, h)

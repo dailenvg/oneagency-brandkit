@@ -56,21 +56,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 480,
         "height": 185,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-on-dark_1x.png",
-        "bytes": 18978
+        "bytes": 14185
       },
       {
         "scale": 2,
         "width": 960,
         "height": 370,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-on-dark_2x.png",
-        "bytes": 51623
+        "bytes": 30979
       },
       {
         "scale": 4,
         "width": 1920,
         "height": 739,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-on-dark_4x.png",
-        "bytes": 158621
+        "bytes": 97347
       }
     ]
   },
@@ -94,21 +94,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 480,
         "height": 185,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-on-light_1x.png",
-        "bytes": 20283
+        "bytes": 16098
       },
       {
         "scale": 2,
         "width": 960,
         "height": 370,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-on-light_2x.png",
-        "bytes": 53690
+        "bytes": 34698
       },
       {
         "scale": 4,
         "width": 1920,
         "height": 739,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-on-light_4x.png",
-        "bytes": 156289
+        "bytes": 103284
       }
     ]
   },
@@ -132,21 +132,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 480,
         "height": 185,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-white_1x.png",
-        "bytes": 7694
+        "bytes": 4326
       },
       {
         "scale": 2,
         "width": 960,
         "height": 370,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-white_2x.png",
-        "bytes": 16038
+        "bytes": 8241
       },
       {
         "scale": 4,
         "width": 1920,
         "height": 739,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-white_4x.png",
-        "bytes": 33809
+        "bytes": 16694
       }
     ]
   },
@@ -170,21 +170,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 480,
         "height": 185,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-ink_1x.png",
-        "bytes": 9422
+        "bytes": 6173
       },
       {
         "scale": 2,
         "width": 960,
         "height": 370,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-ink_2x.png",
-        "bytes": 19472
+        "bytes": 13912
       },
       {
         "scale": 4,
         "width": 1920,
         "height": 739,
         "url": "/kit/logos/stacked/one-agency_logo_stacked-ink_4x.png",
-        "bytes": 41290
+        "bytes": 32218
       }
     ]
   },
@@ -208,21 +208,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 720,
         "height": 93,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-on-dark_1x.png",
-        "bytes": 14789
+        "bytes": 11753
       },
       {
         "scale": 2,
         "width": 1440,
         "height": 187,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-on-dark_2x.png",
-        "bytes": 37769
+        "bytes": 29162
       },
       {
         "scale": 4,
         "width": 2880,
         "height": 374,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-on-dark_4x.png",
-        "bytes": 107653
+        "bytes": 85545
       }
     ]
   },
@@ -246,21 +246,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 720,
         "height": 93,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-on-light_1x.png",
-        "bytes": 15321
+        "bytes": 12876
       },
       {
         "scale": 2,
         "width": 1440,
         "height": 187,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-on-light_2x.png",
-        "bytes": 38775
+        "bytes": 31054
       },
       {
         "scale": 4,
         "width": 2880,
         "height": 374,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-on-light_4x.png",
-        "bytes": 114071
+        "bytes": 91770
       }
     ]
   },
@@ -284,21 +284,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 720,
         "height": 93,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-white_1x.png",
-        "bytes": 6157
+        "bytes": 3734
       },
       {
         "scale": 2,
         "width": 1440,
         "height": 187,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-white_2x.png",
-        "bytes": 12808
+        "bytes": 6833
       },
       {
         "scale": 4,
         "width": 2880,
         "height": 374,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-white_4x.png",
-        "bytes": 27116
+        "bytes": 13446
       }
     ]
   },
@@ -322,21 +322,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 720,
         "height": 93,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-ink_1x.png",
-        "bytes": 7542
+        "bytes": 5078
       },
       {
         "scale": 2,
         "width": 1440,
         "height": 187,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-ink_2x.png",
-        "bytes": 15621
+        "bytes": 11021
       },
       {
         "scale": 4,
         "width": 2880,
         "height": 374,
         "url": "/kit/logos/horizontal/one-agency_logo_horizontal-ink_4x.png",
-        "bytes": 33404
+        "bytes": 26357
       }
     ]
   },
@@ -360,21 +360,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 320,
         "height": 81,
         "url": "/kit/logos/icon/one-agency_logo_icon-on-dark_1x.png",
-        "bytes": 9970
+        "bytes": 8314
       },
       {
         "scale": 2,
         "width": 640,
         "height": 162,
         "url": "/kit/logos/icon/one-agency_logo_icon-on-dark_2x.png",
-        "bytes": 24829
+        "bytes": 16988
       },
       {
         "scale": 4,
         "width": 1280,
         "height": 325,
         "url": "/kit/logos/icon/one-agency_logo_icon-on-dark_4x.png",
-        "bytes": 74451
+        "bytes": 49835
       }
     ]
   },
@@ -398,21 +398,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 320,
         "height": 81,
         "url": "/kit/logos/icon/one-agency_logo_icon-on-light_1x.png",
-        "bytes": 10170
+        "bytes": 8866
       },
       {
         "scale": 2,
         "width": 640,
         "height": 162,
         "url": "/kit/logos/icon/one-agency_logo_icon-on-light_2x.png",
-        "bytes": 24852
+        "bytes": 18195
       },
       {
         "scale": 4,
         "width": 1280,
         "height": 325,
         "url": "/kit/logos/icon/one-agency_logo_icon-on-light_4x.png",
-        "bytes": 73409
+        "bytes": 51303
       }
     ]
   },
@@ -436,21 +436,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 320,
         "height": 81,
         "url": "/kit/logos/icon/one-agency_logo_icon-white_1x.png",
-        "bytes": 3455
+        "bytes": 2327
       },
       {
         "scale": 2,
         "width": 640,
         "height": 162,
         "url": "/kit/logos/icon/one-agency_logo_icon-white_2x.png",
-        "bytes": 6978
+        "bytes": 4024
       },
       {
         "scale": 4,
         "width": 1280,
         "height": 325,
         "url": "/kit/logos/icon/one-agency_logo_icon-white_4x.png",
-        "bytes": 14466
+        "bytes": 7835
       }
     ]
   },
@@ -474,21 +474,21 @@ export const LOGOS: LogoAsset[] = [
         "width": 320,
         "height": 81,
         "url": "/kit/logos/icon/one-agency_logo_icon-ink_1x.png",
-        "bytes": 4314
+        "bytes": 2813
       },
       {
         "scale": 2,
         "width": 640,
         "height": 162,
         "url": "/kit/logos/icon/one-agency_logo_icon-ink_2x.png",
-        "bytes": 8561
+        "bytes": 5831
       },
       {
         "scale": 4,
         "width": 1280,
         "height": 325,
         "url": "/kit/logos/icon/one-agency_logo_icon-ink_4x.png",
-        "bytes": 17861
+        "bytes": 13852
       }
     ]
   }
@@ -507,21 +507,21 @@ export const FAVICONS: IconFile[] = [
     "width": 16,
     "height": 16,
     "url": "/kit/logos/favicon/one-agency_logo_favicon_16x16.png",
-    "bytes": 353
+    "bytes": 291
   },
   {
     "kind": "png",
     "width": 32,
     "height": 32,
     "url": "/kit/logos/favicon/one-agency_logo_favicon_32x32.png",
-    "bytes": 606
+    "bytes": 566
   },
   {
     "kind": "png",
     "width": 48,
     "height": 48,
     "url": "/kit/logos/favicon/one-agency_logo_favicon_48x48.png",
-    "bytes": 949
+    "bytes": 854
   },
   {
     "kind": "ico",
@@ -535,21 +535,21 @@ export const FAVICONS: IconFile[] = [
     "width": 180,
     "height": 180,
     "url": "/kit/logos/favicon/one-agency_logo_apple-touch-icon_180x180.png",
-    "bytes": 4420
+    "bytes": 3536
   },
   {
     "kind": "app-icon",
     "width": 192,
     "height": 192,
     "url": "/kit/logos/favicon/one-agency_logo_app-icon_192x192.png",
-    "bytes": 4765
+    "bytes": 3737
   },
   {
     "kind": "app-icon",
     "width": 512,
     "height": 512,
     "url": "/kit/logos/favicon/one-agency_logo_app-icon_512x512.png",
-    "bytes": 17988
+    "bytes": 11847
   }
 ]
 
@@ -559,13 +559,13 @@ export const SOCIAL_IMAGES: IconFile[] = [
     "width": 1080,
     "height": 1080,
     "url": "/kit/logos/social/one-agency_logo_social-avatar_1080x1080.png",
-    "bytes": 34244
+    "bytes": 25138
   },
   {
     "kind": "og",
     "width": 1200,
     "height": 630,
     "url": "/kit/logos/social/one-agency_logo_og-image_1200x630.png",
-    "bytes": 31617
+    "bytes": 23778
   }
 ]

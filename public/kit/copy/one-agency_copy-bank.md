@@ -1,6 +1,6 @@
 # ONE Agency copy bank
 
-Brand kit v1.0 · Updated 2026-11-17. Every line is from the source pack; source and date follow each line.
+Brand kit v1.1 · Updated 2026-11-18. Every line is from the source pack; source and date follow each line.
 
 ## Headlines
 
@@ -49,7 +49,7 @@ Brand kit v1.0 · Updated 2026-11-17. Every line is from the source pack; source
 - Run My Free Audit
   - Source: oneagency.com, November 2026
 - Talk to ONE Agency
-  - Source: Sample ad C (CD approved), 2026-11-17
+  - Source: Sample ad C, approved 2026-11-17, 2026-11-17
 - Run the growth audit
   - Source: oneagency.com, November 2026
 - Run my ChattiBiz Growth Audit
@@ -91,7 +91,7 @@ Brand kit v1.0 · Updated 2026-11-17. Every line is from the source pack; source
 ## Legal and disclaimers
 
 - Figures as published on oneagency.com, November 2026.
-  - Source: Sample ad B (CD approved), 2026-11-17
+  - Source: Sample ad B, approved 2026-11-17, 2026-11-17
 - Awarded to ConversionIQ.ai
   - Source: oneagency.com, November 2026. Required wherever the award appears.
 - Best AI Product · 2026 ARDY Awards, American Resort Development Association · Awarded to ConversionIQ.ai
@@ -105,4 +105,4 @@ Brand kit v1.0 · Updated 2026-11-17. Every line is from the source pack; source
 - © 2026 ONE Agency, LLC. All rights reserved.
   - Source: oneagency.com, November 2026
 - (689) 205-9923 · oneagency.com
-  - Source: Sample ad C (CD approved), 2026-11-17
+  - Source: Sample ad C, approved 2026-11-17, 2026-11-17

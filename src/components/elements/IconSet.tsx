@@ -55,10 +55,10 @@ export function IconSet() {
               href={iconUrl(icon.file)}
               download
               aria-label={`Download ${icon.name} icon (SVG)`}
-              className="group flex min-h-touch flex-col items-start gap-3 rounded-site border border-edge bg-surface p-4 transition-colors hover:border-rose"
+              className="group flex min-h-touch flex-col items-start gap-3 rounded-site border border-edge bg-surface p-4 transition-colors hover:border-accent"
               {...pressCard}
             >
-              {Component && <Component className="size-8 text-text transition-colors group-hover:text-rose" aria-hidden />}
+              {Component && <Component className="size-8 text-text transition-colors group-hover:text-accent" aria-hidden />}
               <span>
                 <span className="block text-step-small font-semibold text-text">{icon.name}</span>
                 <span className="block text-step-small text-text-3">{icon.use}</span>

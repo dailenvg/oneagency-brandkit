@@ -1,9 +1,14 @@
 #!/usr/bin/env node
 /**
  * Graphic elements for the kit, as downloads in public/kit/elements/:
- *   one-agency_element_[id].svg   vector, colours from the live tokens; text elements embed their (Latin subset) fonts
- *   one-agency_element_[id].png   the same SVG rendered in Chromium (2x, transparent where the element is)
- *   icons/one-agency_icon_[name].svg   the Phosphor bold subset used in ads, white fill
+ *   one-agency_element_[id].svg            vector, colours from the live tokens; text elements embed their (Latin subset) fonts
+ *   one-agency_element_[id].png            the same SVG rendered in Chromium (2x, transparent where the element is)
+ *   one-agency_element_[id]-on-dark.svg    the kit graphics (signature devices, patterns, illustrations), once per tone,
+ *   one-agency_element_[id]-on-light.svg   each with its PNG (2x; patterns are 1080 px full-bleed, so 1x)
+ *   icons/one-agency_icon_[name].svg       the Phosphor bold subset used in ads, white fill
+ *
+ * The kit graphics are the hub's own React components (src/kit/graphics/), loaded through Vite's SSR loader and
+ * rendered to static markup, so the download is exactly what the page shows, minus the motion.
  *
  * The element list and icon subset live in src/data/elements.ts; colours come from src/data/tokens.ts (generated from
  * the live CSS), so nothing here hard-codes a brand value.
@@ -17,8 +22,9 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import * as Phosphor from '@phosphor-icons/react/dist/ssr'
 import { chromium } from 'playwright'
+import { createServer } from 'vite'
 import { AD_CONCEPTS } from '../src/data/ad-copy.ts'
-import { AD_ICONS, ELEMENTS, ELEMENTS_DIR } from '../src/data/elements.ts'
+import { AD_ICONS, ELEMENTS, ELEMENTS_DIR, elementPath } from '../src/data/elements.ts'
 import { TOKENS } from '../src/data/tokens.ts'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
@@ -172,29 +178,6 @@ ${rule(x2)}
   return svg(w, h, fontStyle(['Geist-600', 'Geist-700', 'Lato-700']) + body, defs)
 }
 
-function gradientLine() {
-  const pts = [
-    [40, 340],
-    [300, 300],
-    [520, 250],
-    [760, 180],
-    [980, 120],
-    [1150, 60],
-  ]
-  const [ex, ey] = pts.at(-1)
-  const defs = linear(
-    'line',
-    [
-      [0, C.rose],
-      [1, C.lilac],
-    ],
-    { units: 'userSpaceOnUse', x2: 1150 },
-  ).replace('x1="0"', 'x1="40"')
-  const body = `<polyline points="${pts.map((p) => p.join(',')).join(' ')}" fill="none" stroke="url(#line)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="${ex}" cy="${ey}" r="28" fill="none" stroke="${C.lilac}" stroke-width="4" stroke-opacity="0.35"/><circle cx="${ex}" cy="${ey}" r="14" fill="${C.lilac}"/>`
-  return svg(1200, 400, body, defs)
-}
-
 function halo() {
   const defs = `<radialGradient id="halo"><stop offset="0" stop-color="${C.lilac}" stop-opacity="0.45"/><stop offset="0.55" stop-color="${C.lilac}" stop-opacity="0.16"/><stop offset="1" stop-color="${C.lilac}" stop-opacity="0"/></radialGradient>`
   return svg(1000, 1000, '<circle cx="500" cy="500" r="500" fill="url(#halo)"/>', defs)
@@ -211,21 +194,42 @@ function glowField() {
   return svg(s, s, body, defs)
 }
 
-const rule = (w, h, stops, vertical = false) =>
-  svg(w, h, `<rect width="${w}" height="${h}" fill="url(#g)"/>`, linear('g', stops, vertical ? { x2: 0, y2: 1 } : {}))
+/* ------------------------------------------------------------------ kit graphics (src/kit/graphics) */
 
+const TONE_OF = { 'on-dark': 'dark', 'on-light': 'light' }
+
+/** Embeds the faces a graphic's text uses, and drops the hub-only motion hooks. */
+function finishGraphic(markup) {
+  const faces = [markup.includes('font-family="Lato"') && 'Lato-700', markup.includes('font-family="Geist"') && 'Geist-500', markup.includes('font-family="Geist"') && 'Geist-600'].filter(Boolean)
+  const clean = markup.replace(/ data-anim="[a-z]+"/g, '')
+  return `${faces.length ? clean.replace(/^(<svg[^>]*>)/, `$1${fontStyle(faces)}`) : clean}\n`
+}
+
+/** Renders every kit graphic, once per tone: file path → [svg, png scale]. */
+async function buildGraphics() {
+  const vite = await createServer({ root: ROOT, configFile: false, server: { middlewareMode: true, hmr: false }, appType: 'custom', logLevel: 'error' })
+  try {
+    const { GRAPHICS } = await vite.ssrLoadModule('/src/kit/graphics/registry.ts')
+    const files = {}
+    for (const g of GRAPHICS) {
+      const e = ELEMENTS.find((x) => x.id === g.id)
+      if (!e) throw new Error(`Graphic ${g.id} is not in src/data/elements.ts`)
+      for (const v of e.variants) {
+        const markup = renderToStaticMarkup(createElement(g.Component, { tone: TONE_OF[v.id], idPrefix: `oa-${g.id}` }))
+        files[elementPath(e, 'svg', v.id)] = [finishGraphic(markup), e.family === 'pattern' ? 1 : 2]
+      }
+    }
+    return files
+  } finally {
+    await vite.close()
+  }
+}
+
+/** The hand-built elements: file path → [svg, png scale]. */
 async function buildElements(measure) {
-  const bar = svg(600, 12, '<rect width="600" height="12" rx="6" fill="url(#bar)"/>', linear('bar', BAR.map((c, i) => [i / (BAR.length - 1), c])))
-  /** id → [svg, png scale]. */
-  return {
-    'gradient-bar': [bar, 2],
-    'gradient-line': [gradientLine(), 2],
+  const byId = {
     halo: [halo(), 1],
     'glow-field': [glowField(), 1],
-    'divider-hairline': [rule(1200, 2, fadeStops(0.35, 0.65, 0.55)), 2],
-    'divider-lit-edge': [rule(1200, 2, fadeStops(0.3, 0.7, 1)), 2],
-    'divider-stat': [rule(2, 160, fadeStops(0.3, 0.7, 0.7), true), 2],
-    'divider-stat-h': [rule(400, 2, fadeStops(0.3, 0.7, 0.7)), 2],
     'cta-primary': [await cta(measure, 'Call to action', { fill: C.rose, stroke: C.rose, color: C.onAccent }), 2],
     'cta-secondary': [await cta(measure, 'Call to action', { fill: 'none', stroke: C.text, color: C.text }), 2],
     'cta-on-light': [await cta(measure, 'Call to action', { fill: C.ink, stroke: C.ink, color: C.paper }), 2],
@@ -233,7 +237,18 @@ async function buildElements(measure) {
     'award-badge': [await awardBadge(measure), 2],
     laurel: [laurel(), 2],
   }
+  return Object.fromEntries(
+    Object.entries(byId).map(([id, built]) => {
+      const e = ELEMENTS.find((x) => x.id === id)
+      if (!e) throw new Error(`Element ${id} is not in src/data/elements.ts`)
+      return [elementPath(e, 'svg'), built]
+    }),
+  )
 }
+
+/** Every SVG file the registry expects (PNG twins follow), except the rendered Möbius set. */
+const expectedSvgs = () =>
+  ELEMENTS.filter((e) => e.formats.includes('svg')).flatMap((e) => (e.variants.length ? e.variants.map((v) => elementPath(e, 'svg', v.id)) : [elementPath(e, 'svg')]))
 
 /* ------------------------------------------------------------------ run */
 
@@ -242,18 +257,17 @@ const browser = await chromium.launch()
 try {
   const page = await browser.newPage()
   const measure = await measurer(page)
-  const built = await buildElements(measure)
-  const missing = ELEMENTS.filter((e) => !built[e.id]).map((e) => e.id)
+  const built = { ...(await buildElements(measure)), ...(await buildGraphics()) }
+  const missing = expectedSvgs().filter((file) => !built[file])
   if (missing.length) throw new Error(`No generator for: ${missing.join(', ')}`)
 
-  for (const e of ELEMENTS) {
-    const [markup, scale] = built[e.id]
-    writeFileSync(resolve(OUT, `${e.base}.svg`), markup)
+  for (const [file, [markup, scale]] of Object.entries(built)) {
+    writeFileSync(resolve(OUT, file), markup)
     const [, w, h] = markup.match(/width="([\d.]+)" height="([\d.]+)"/)
     const shot = await browser.newPage({ viewport: { width: Math.ceil(w), height: Math.ceil(h) }, deviceScaleFactor: scale })
     await shot.setContent(`<html><body style="margin:0;background:transparent">${markup}</body></html>`)
     await shot.evaluate(() => document.fonts.ready)
-    await shot.locator('svg').screenshot({ path: resolve(OUT, `${e.base}.png`), omitBackground: true })
+    await shot.locator('svg').first().screenshot({ path: resolve(OUT, file.replace(/\.svg$/, '.png')), omitBackground: true })
     await shot.close()
   }
 
@@ -267,4 +281,4 @@ try {
   await browser.close()
 }
 
-console.log(`elements: ${ELEMENTS.length} SVG + PNG and ${AD_ICONS.length} icons in public${ELEMENTS_DIR}`)
+console.log(`elements: ${expectedSvgs().length} SVG + PNG and ${AD_ICONS.length} icons in public${ELEMENTS_DIR}`)

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Fetch the three typefaces oneagency.com loads and write the kit's font files.
+"""Fetch the three typefaces oneagency.com loads (and Sora, the hub's own UI face) and write the font files.
 
 Sources (all SIL Open Font License 1.1):
   Geist 400/500/600/700  official release zip, github.com/vercel/geist-font
   Lato 700               github.com/google/fonts (ofl/lato)
   Metal 400              github.com/google/fonts (ofl/metal)
+  Sora 100-800 variable  github.com/google/fonts (ofl/sora), site only
 
 Writes:
   public/kit/fonts/one-agency_font_[family]-[weight].{ttf,woff2}   full-character downloads
@@ -81,6 +82,20 @@ def google(family: str, filename: str, weight: int, scratch: Path) -> None:
     (KIT_DIR / f"one-agency_font_{family}_ofl.txt").write_bytes(fetch(f"{GOOGLE_FONTS}/{family}/OFL.txt"))
 
 
+def sora(scratch: Path) -> None:
+    """Sora, the hub's face for token names, values and file names (in place of a monospace). Site only: it is not a
+    brand face, so it gets no kit download. One variable WOFF2 (weights 100 to 800), Latin subset."""
+    source = scratch / "sora.ttf"
+    source.write_bytes(fetch(f"{GOOGLE_FONTS}/sora/Sora%5Bwght%5D.ttf"))
+    subset.main([
+        str(source),
+        f"--unicodes={LATIN}",
+        "--layout-features=*",
+        "--flavor=woff2",
+        f"--output-file={SITE_DIR / 'sora-variable.woff2'}",
+    ])
+
+
 def main() -> None:
     for folder in (KIT_DIR, SITE_DIR):
         folder.mkdir(parents=True, exist_ok=True)
@@ -89,6 +104,7 @@ def main() -> None:
         geist(scratch)
         google("lato", "Lato-Bold.ttf", 700, scratch)
         google("metal", "Metal-Regular.ttf", 400, scratch)
+        sora(scratch)
     finally:
         shutil.rmtree(scratch, ignore_errors=True)
     for path in sorted([*KIT_DIR.iterdir(), *SITE_DIR.iterdir()]):

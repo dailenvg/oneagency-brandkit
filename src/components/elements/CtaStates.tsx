@@ -28,7 +28,7 @@ const ROWS: Row[] = [
     label: 'Secondary: outline',
     source: 'live',
     light: false,
-    pinned: { Hover: 'bg-text! text-on-accent!', Focus: 'outline-2 outline-offset-3 outline-text', Pressed: 'bg-text-2! border-text-2! text-on-accent!' },
+    pinned: { Hover: 'bg-text! text-on-text!', Focus: 'outline-2 outline-offset-3 outline-text', Pressed: 'bg-text-2! border-text-2! text-on-text!' },
   },
   {
     variant: 'on-light',
@@ -68,11 +68,11 @@ export function CtaStates() {
         </thead>
         <tbody>
           {ROWS.map((row) => (
-            <tr key={row.variant} className={`border-t border-edge ${row.light ? 'bg-paper' : 'bg-ground'}`}>
+            <tr key={row.variant} data-theme={row.light ? 'light' : 'dark'} className={`border-t border-edge ${row.light ? 'bg-paper' : 'bg-ground'}`}>
               <th scope="row" className={`min-w-40 p-4 text-left font-semibold ${row.light ? 'text-ink' : 'text-text'}`}>
                 <span className="block">{row.label}</span>
                 <span className="mt-1.5 inline-block">
-                  <Badge tone={row.source === 'live' ? 'live' : 'proposed'}>{row.source === 'live' ? 'Live site' : 'Proposed'}</Badge>
+                  <Badge>{row.source === 'live' ? 'Live site' : 'Proposed'}</Badge>
                 </span>
               </th>
               {STATES.map((s) => (

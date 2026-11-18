@@ -1,6 +1,6 @@
 {
   "title": "ONE Agency copy bank",
-  "version": "Brand kit v1.0 · Updated 2026-11-17",
+  "version": "Brand kit v1.1 · Updated 2026-11-18",
   "groups": [
     {
       "id": "headline",
@@ -145,7 +145,7 @@
         {
           "id": "c-talk",
           "text": "Talk to ONE Agency",
-          "source": "Sample ad C (CD approved)",
+          "source": "Sample ad C, approved 2026-11-17",
           "date": "2026-11-17"
         },
         {
@@ -278,7 +278,7 @@
         {
           "id": "l-figures",
           "text": "Figures as published on oneagency.com, November 2026.",
-          "source": "Sample ad B (CD approved)",
+          "source": "Sample ad B, approved 2026-11-17",
           "date": "2026-11-17"
         },
         {
@@ -322,7 +322,7 @@
         {
           "id": "l-contact",
           "text": "(689) 205-9923 · oneagency.com",
-          "source": "Sample ad C (CD approved)",
+          "source": "Sample ad C, approved 2026-11-17",
           "date": "2026-11-17"
         }
       ]

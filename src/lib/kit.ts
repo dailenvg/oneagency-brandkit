@@ -4,8 +4,10 @@
  */
 
 export const KIT = {
-  version: '1.0',
-  updated: '2026-11-17',
+  version: '1.1',
+  /** The release before this one, for the "what's new" note. */
+  previousVersion: '1.0',
+  updated: '2026-11-18',
   site: 'https://oneagency.com',
   liveCss: 'https://oneagency.com/assets/css/home.bundle.css?v=746d4bae1d',
   liveCssPulled: '2026-11-17',
@@ -13,19 +15,30 @@ export const KIT = {
 
 export const VERSION_NOTE = `Brand kit v${KIT.version} · Updated ${KIT.updated}`
 
-/** Download groups: each is a folder under public/kit/ and gets its own ZIP. Order is the filter order on the site. */
+/**
+ * Download groups, each with its own ZIP. Order is the filter order on the site. A group is the folder public/kit/[id]
+ * unless it lists `paths` (folders or single files under public/).
+ */
 export const ASSET_GROUPS = [
   { id: 'logos', label: 'Logos' },
   { id: 'colour', label: 'Colour' },
   { id: 'fonts', label: 'Fonts' },
   { id: 'elements', label: 'Elements' },
+  { id: 'glass', label: 'Glass & texture', paths: ['kit/illustrations', 'kit/textures', 'kit/references', 'vendor/ciq/README.md'] },
   { id: 'templates', label: 'Templates' },
+  { id: 'ads', label: 'Creative ads' },
   { id: 'imagery', label: 'Imagery' },
   { id: 'motion', label: 'Motion' },
   { id: 'copy', label: 'Copy' },
 ] as const
 
 export type AssetGroupId = (typeof ASSET_GROUPS)[number]['id']
+
+/** Where a group's files live, relative to public/. */
+export const groupPaths = (id: AssetGroupId): readonly string[] => {
+  const group = ASSET_GROUPS.find((g) => g.id === id)
+  return group && 'paths' in group ? group.paths : [`kit/${id}`]
+}
 
 export const zipUrl = (group: AssetGroupId) => `/kit/zips/one-agency_kit_${group}.zip`
 

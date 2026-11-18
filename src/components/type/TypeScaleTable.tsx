@@ -24,7 +24,7 @@ export function TypeScaleTable() {
         <tbody>
           {TYPE_SCALE.map((step) => (
             <tr key={step.token} className="border-t border-edge align-middle">
-              <th scope="row" className="p-3 font-mono font-medium whitespace-nowrap text-text-2">
+              <th scope="row" className="p-3 font-code font-medium whitespace-nowrap text-text-2">
                 {step.token}
               </th>
               <td className={`p-3 font-semibold whitespace-nowrap text-text ${step.className} ${step.token === '--step-num' ? 'stat-num' : ''}`}>

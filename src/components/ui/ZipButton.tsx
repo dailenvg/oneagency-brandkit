@@ -9,16 +9,17 @@ interface ZipButtonProps {
   group: AssetGroupId
   label: string
   variant?: ButtonVariant
+  className?: string
 }
 
 /** "Download all" for one asset group. Disabled until `npm run kit:zips` has built the ZIP. */
-export function ZipButton({ group, label, variant = 'secondary' }: ZipButtonProps) {
+export function ZipButton({ group, label, variant = 'secondary', className }: ZipButtonProps) {
   const zip = assetFor(zipUrl(group))
   return (
-    <ButtonLink href={zipUrl(group)} download variant={variant} disabled={!zip} aria-label={`Download ${label}, ZIP${zip ? `, ${formatBytes(zip.bytes)}` : ', not built yet'}`}>
-      <DownloadSimple className="size-5" aria-hidden />
+    <ButtonLink href={zipUrl(group)} download variant={variant} disabled={!zip} className={className} aria-label={`Download ${label}, ZIP${zip ? `, ${formatBytes(zip.bytes)}` : ', not available yet'}`}>
+      <DownloadSimple aria-hidden />
       {label}
-      {zip && <span className="font-normal opacity-70">{formatBytes(zip.bytes)}</span>}
+      {zip && <span className="font-normal opacity-75">{formatBytes(zip.bytes)}</span>}
     </ButtonLink>
   )
 }

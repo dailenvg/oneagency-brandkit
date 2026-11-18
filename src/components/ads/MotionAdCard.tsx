@@ -5,7 +5,8 @@ import { motionAdExport, motionAdSource, type MotionAdConcept, type MotionAdSize
 import { assetFor } from '../../lib/assets'
 import { formatSeconds } from '../../lib/format'
 import { useOnScreen } from '../../lib/hooks'
-import { DownloadLink } from '../ui/DownloadLink'
+import { DownloadMenu } from '../ui/DownloadMenu'
+import { buttonClass } from '../ui/button-styles'
 
 interface MotionAdCardProps {
   concept: MotionAdConcept
@@ -41,14 +42,14 @@ export function MotionAdCard({ concept, size, name }: MotionAdCardProps) {
 
   return (
     <figure className="flex max-w-full flex-col gap-3" style={{ width: Math.min(width, size.width) }}>
-      <div className="overflow-hidden rounded-site-sm border border-edge bg-void" style={{ aspectRatio: `${size.width} / ${size.height}` }}>
+      <div data-theme="dark" className="overflow-hidden rounded-site-sm border border-edge bg-void" style={{ aspectRatio: `${size.width} / ${size.height}` }}>
         {video ? (
           <video ref={ref} src={video.url} poster={poster} controls muted playsInline preload="metadata" className="size-full" aria-label={`${name}, ${dims}, animated, no sound`} />
         ) : (
           <div className="grid size-full place-items-center p-4 text-center text-step-small text-text-3">
             <span className="flex flex-col items-center gap-2">
               <FilmSlate className="size-6" aria-hidden />
-              Not exported yet. Run <code className="font-mono text-text-2">npm run kit:motion-ads</code>.
+              This animated ad is on the way.
             </span>
           </div>
         )}
@@ -58,19 +59,21 @@ export function MotionAdCard({ concept, size, name }: MotionAdCardProps) {
           <span className="font-num font-semibold text-text">{size.width}×{size.height}</span>
           {video?.duration ? <span className="font-num text-step-small text-text-3">{formatSeconds(video.duration)}</span> : null}
         </p>
-        <div className="flex flex-wrap gap-2">
-          {files.map(({ ext, file }) => (
-            <DownloadLink key={ext} url={file!.url} label={ext === 'zip' ? 'HTML5' : ext.toUpperCase()} bytes={file!.bytes} />
-          ))}
+        <div className="flex flex-wrap items-center gap-2">
           <a
             href={motionAdSource(concept, size)}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open live: the ${dims} HTML5 ad (opens in a new tab)`}
-            className="inline-flex min-h-touch items-center gap-1.5 rounded-full px-3 text-step-small font-semibold text-rose hover:bg-surface-2 hover:text-text"
+            className={buttonClass('link', 'sm', '-ms-4')}
           >
-            Open live <ArrowUpRight className="size-4" aria-hidden />
+            Open live <ArrowUpRight aria-hidden />
           </a>
+          <DownloadMenu
+            title={`${name}, ${size.width}×${size.height}`}
+            className="ml-auto"
+            files={files.map(({ ext, file }) => ({ url: file!.url, label: ext === 'zip' ? 'HTML5 package' : ext.toUpperCase(), bytes: file!.bytes }))}
+          />
         </div>
       </figcaption>
     </figure>

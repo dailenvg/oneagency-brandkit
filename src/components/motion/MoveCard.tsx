@@ -10,14 +10,14 @@ export function MoveCard({ move }: { move: Move }) {
   const [run, setRun] = useState(0)
   return (
     <motion.article variants={reveal} className="flex flex-col overflow-hidden rounded-site border border-edge bg-surface">
-      <div key={run} aria-hidden className="relative grid h-48 place-items-center overflow-hidden bg-ground px-6">
+      <div key={run} aria-hidden data-theme="dark" className="relative grid h-48 place-items-center overflow-hidden bg-ground px-6">
         <MoveDemo id={move.id} />
       </div>
       <div className="flex flex-1 flex-col gap-4 p-5">
         <header className="flex items-start justify-between gap-3">
           <div>
-            <h4 className="text-step-1 font-semibold text-text">{move.name}</h4>
-            <code className="font-mono text-step-small text-text-3">{move.api}</code>
+            <h3 className="text-step-1 font-semibold text-text">{move.name}</h3>
+            <code className="font-code text-step-small text-text-3">{move.api}</code>
           </div>
           {move.id !== 'hold' && <ReplayButton onClick={() => setRun((n) => n + 1)} label={move.name} />}
         </header>

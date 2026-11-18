@@ -1,5 +1,6 @@
 import { ArrowClockwise, ImageBroken } from '@phosphor-icons/react'
 import { useState, type CSSProperties, type ReactNode } from 'react'
+import { buttonClass } from './button-styles'
 
 interface SmartImageProps {
   src: string
@@ -44,7 +45,7 @@ export function SmartImage({ src, alt, width, height, className, imgClassName, s
               type="button"
               onClick={retry}
               aria-label={`Image failed to load${alt ? `: ${alt}` : ''}. Retry`}
-              className="grid size-touch place-items-center rounded-full text-text-3 transition-colors hover:text-rose"
+              className="grid size-touch place-items-center rounded-full text-text-3 transition-colors hover:text-accent"
             >
               <ImageBroken className="size-6" aria-hidden />
             </button>
@@ -56,8 +57,8 @@ export function SmartImage({ src, alt, width, height, className, imgClassName, s
               <span>
                 Image failed to load{alt && <span className="sr-only">: {alt}</span>}
               </span>
-              <button type="button" onClick={retry} className="inline-flex min-h-touch items-center gap-2 rounded-full px-3 font-semibold text-rose hover:text-text">
-                <ArrowClockwise className="size-4" aria-hidden /> Retry
+              <button type="button" onClick={retry} className={buttonClass('link', 'sm')}>
+                <ArrowClockwise aria-hidden /> Retry
               </button>
             </div>
           </div>

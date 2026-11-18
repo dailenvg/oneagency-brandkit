@@ -13,21 +13,19 @@ export function VoiceSection() {
   return (
     <Section
       id="voice"
-      index="07"
       eyebrow="Voice"
       title="Straight, specific, operator-minded"
       accent={[1]}
-      band
       lede="Lead with the buyer's outcome. Say what we do after the lead, and put a date on every number."
     >
       <div className="flex flex-col gap-section">
         <div>
-          <SubHeading title="Four pillars" badge={<Badge tone="proposed">Proposed</Badge>} />
+          <SubHeading title="Four pillars" badge={<Badge>Proposed</Badge>} />
           <Reveal as="ol" stagger className="grid gap-4 md:grid-cols-2">
             {PILLARS.map((p, i) => (
               <motion.li key={p.title} variants={reveal} className="flex flex-col gap-3 rounded-site border border-edge bg-surface p-6">
                 <span className="stat-num text-step-num">0{i + 1}</span>
-                <h4 className="text-step-2 font-bold tracking-tight">{p.title}</h4>
+                <h3 className="text-step-2 font-bold tracking-tight">{p.title}</h3>
                 <p className="text-step--1 text-text-2">{p.body}</p>
               </motion.li>
             ))}
@@ -73,7 +71,7 @@ export function VoiceSection() {
             {HEADLINE_PATTERNS.map((p) => (
               <motion.article key={p.pattern} variants={reveal} className="flex flex-col gap-4 rounded-site border border-edge bg-surface p-6">
                 <header>
-                  <h4 className="font-mono text-step--1 font-semibold text-rose">{p.pattern}</h4>
+                  <h3 className="font-code text-step--1 font-semibold text-accent">{p.pattern}</h3>
                   <p className="mt-1 text-step-small text-text-3">{p.source}</p>
                 </header>
                 <ul className="flex flex-col gap-2">

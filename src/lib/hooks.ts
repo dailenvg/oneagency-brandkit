@@ -1,72 +1,5 @@
 import { useEffect, useState, useSyncExternalStore, type CSSProperties, type RefObject } from 'react'
 
-/** Share of the viewport height where the scroll-spy band starts (matches the default rootMargin top). */
-const SPY_LINE = 0.35
-
-/**
- * Id of the section currently crossing the upper third of the viewport, or null above the first section (the hero).
- * Below the last section (footer) the last one stays active. Sections that mount later (code-split) are picked up as
- * they appear.
- */
-export function useScrollSpy(ids: string[], rootMargin = '-35% 0px -60% 0px') {
-  const [active, setActive] = useState<string | null>(null)
-  useEffect(() => {
-    const inBand = new Set<string>()
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) inBand.add(e.target.id)
-          else inBand.delete(e.target.id)
-        }
-        const current = [...ids].reverse().find((id) => inBand.has(id))
-        if (current) return setActive(current)
-        // Nothing in the band: in the hero, clear; in the footer, keep the last section.
-        const first = document.getElementById(ids[0])
-        if (first && first.getBoundingClientRect().top > window.innerHeight * SPY_LINE) setActive(null)
-      },
-      { rootMargin },
-    )
-    const seen = new Set<string>()
-    const observeNew = () => {
-      for (const id of ids) {
-        const el = seen.has(id) ? null : document.getElementById(id)
-        if (!el) continue
-        seen.add(id)
-        io.observe(el)
-      }
-      if (seen.size === ids.length) mo.disconnect()
-    }
-    const mo = new MutationObserver(observeNew)
-    mo.observe(document.body, { childList: true, subtree: true })
-    observeNew()
-    return () => {
-      mo.disconnect()
-      io.disconnect()
-    }
-  }, [ids, rootMargin])
-  return active
-}
-
-/**
- * True once the element with this id has scrolled out of view, and false again when it comes back. The top edge is
- * the page's scroll-padding-top, the band a fixed header covers, so an anchor jump that parks the element's last
- * pixels under the header still counts as scrolled past.
- */
-export function useScrolledPast(id: string) {
-  const [past, setPast] = useState(false)
-  const tablet = useMediaQuery('(min-width: 768px)')
-  useEffect(() => {
-    const el = document.getElementById(id)
-    if (!el) return
-    // One extra pixel: an element that only touches the edge, as an anchor jump leaves it, still counts as intersecting.
-    const inset = (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) + 1
-    const io = new IntersectionObserver(([e]) => setPast(!e.isIntersecting && e.boundingClientRect.top < 0), { rootMargin: `-${inset}px 0px 0px 0px` })
-    io.observe(el)
-    return () => io.disconnect()
-  }, [id, tablet])
-  return past
-}
-
 /**
  * True while the element is on screen and the tab is visible. Gate endless loops on this so off-screen motion never
  * competes with scrolling for frames.
@@ -90,18 +23,21 @@ export function useOnScreen<T extends Element>(ref: RefObject<T | null>, margin 
   return onScreen && visible
 }
 
+export type ScrollAxis = 'x' | 'y'
+
 /**
- * Whether a horizontal scroller has hidden content before (start) or after (end) what is showing. Drives the fade
- * edges that tell people a strip scrolls.
+ * Whether a scroller has hidden content before (start) or after (end) what is showing, along `axis` (horizontal strips
+ * by default; "y" for the sidebar nav). Drives the fade edges that tell people a region scrolls.
  */
-export function useScrollEdges<T extends HTMLElement>(ref: RefObject<T | null>) {
+export function useScrollEdges<T extends HTMLElement>(ref: RefObject<T | null>, axis: ScrollAxis = 'x') {
   const [edges, setEdges] = useState({ start: false, end: false })
   useEffect(() => {
     const el = ref.current
     if (!el) return
     const update = () => {
-      const start = el.scrollLeft > 1
-      const end = el.scrollLeft + el.clientWidth < el.scrollWidth - 1
+      const [pos, view, total] = axis === 'x' ? [el.scrollLeft, el.clientWidth, el.scrollWidth] : [el.scrollTop, el.clientHeight, el.scrollHeight]
+      const start = pos > 1
+      const end = pos + view < total - 1
       setEdges((prev) => (prev.start === start && prev.end === end ? prev : { start, end }))
     }
     update()
@@ -113,17 +49,17 @@ export function useScrollEdges<T extends HTMLElement>(ref: RefObject<T | null>) 
       el.removeEventListener('scroll', update)
       ro.disconnect()
     }
-  }, [ref])
+  }, [ref, axis])
   return edges
 }
 
 /** Fade width for scroll edges, px (8pt grid). */
 const EDGE_FADE = 32
 
-/** Mask that fades whichever edge of a horizontal scroller has more content behind it. */
-export function edgeFade({ start, end }: { start: boolean; end: boolean }): CSSProperties {
+/** Mask that fades whichever edge of a scroller has more content behind it (left/right for "x", top/bottom for "y"). */
+export function edgeFade({ start, end }: { start: boolean; end: boolean }, axis: ScrollAxis = 'x'): CSSProperties {
   if (!start && !end) return {}
-  const mask = `linear-gradient(to right, ${start ? 'transparent' : '#000'} 0, #000 ${EDGE_FADE}px, #000 calc(100% - ${EDGE_FADE}px), ${end ? 'transparent' : '#000'} 100%)`
+  const mask = `linear-gradient(${axis === 'x' ? 'to right' : 'to bottom'}, ${start ? 'transparent' : '#000'} 0, #000 ${EDGE_FADE}px, #000 calc(100% - ${EDGE_FADE}px), ${end ? 'transparent' : '#000'} 100%)`
   return { maskImage: mask, WebkitMaskImage: mask }
 }
 
@@ -137,4 +73,47 @@ export function useMediaQuery(query: string) {
     },
     () => matchMedia(query).matches,
   )
+}
+
+const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), video[controls], [tabindex]:not([tabindex="-1"])'
+
+/**
+ * Modal behaviour for an open dialog: locks page scroll, moves focus inside (to `initialFocus` or the first control),
+ * keeps Tab and Shift+Tab inside, closes on Escape, and returns focus to whatever opened it.
+ */
+export function useModal<T extends HTMLElement>(open: boolean, containerRef: RefObject<T | null>, onClose: () => void, initialFocus?: RefObject<HTMLElement | null>) {
+  useEffect(() => {
+    if (!open) return
+    const opener = document.activeElement as HTMLElement | null
+    const overflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const focusables = () => [...(containerRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? [])]
+    ;(initialFocus?.current ?? focusables()[0])?.focus()
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        onClose()
+        return
+      }
+      if (e.key !== 'Tab') return
+      const items = focusables()
+      if (!items.length) return
+      const [first, last] = [items[0], items[items.length - 1]]
+      const inside = containerRef.current?.contains(document.activeElement)
+      if (e.shiftKey && (document.activeElement === first || !inside)) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = overflow
+      opener?.focus({ preventScroll: true })
+    }
+  }, [open, containerRef, onClose, initialFocus])
 }

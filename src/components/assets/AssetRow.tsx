@@ -3,7 +3,9 @@ import { motion } from 'motion/react'
 import type { Ref } from 'react'
 import type { AssetEntry } from '../../lib/assets'
 import { formatBytes, formatSeconds, formatSize } from '../../lib/format'
+import { usesMobius } from '../../lib/mobius-assets'
 import { press, swap } from '../../lib/motion'
+import { MobiusCreditLine } from '../ads/creative/MobiusCredit'
 import { AssetThumb } from './AssetThumb'
 
 interface AssetRowProps {
@@ -20,7 +22,7 @@ export function AssetRow({ asset, ref }: AssetRowProps) {
       <AssetThumb asset={asset} />
       <div className="min-w-0 flex-1">
         {/* Two lines, breaking anywhere: long file names stay readable on phones, where a title tooltip never shows. */}
-        <p className="line-clamp-2 font-mono text-step-small break-all text-text" title={asset.name}>
+        <p className="line-clamp-2 font-code text-step-small break-all text-text" title={asset.name}>
           {asset.name}
         </p>
         <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-step-small text-text-3">
@@ -31,6 +33,11 @@ export function AssetRow({ asset, ref }: AssetRowProps) {
             </span>
           ))}
         </p>
+        {usesMobius(asset.url) && (
+          <div className="mt-1">
+            <MobiusCreditLine />
+          </div>
+        )}
       </div>
       <motion.a
         href={asset.url}
