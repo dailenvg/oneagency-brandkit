@@ -51,7 +51,7 @@ export function GlassSection() {
 
         <div>
           <SubHeading title="Components" badge={<Badge>Proposed</Badge>}>
-            React components in src/kit/glass/, drawn from theme tokens, so they work on dark and light. Copy a call to use it.
+            Components built to these rules from the theme tokens, so they work on dark and light. Copy a component&apos;s code to use it.
           </SubHeading>
           <ComponentGallery />
         </div>

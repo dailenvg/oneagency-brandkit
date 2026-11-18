@@ -271,7 +271,7 @@ export const CREATIVE_CONCEPTS: CreativeAdConcept[] = [
       { value: 'Over 80k', label: 'Leads delivered' },
       { value: '22+%', label: 'Website to lead conversion' },
     ],
-    source: 'Marriott Vacation Club Grande Vista, Meta, July 2023 – May 2025',
+    source: 'Marriott Vacation Club Grande Vista, Meta, July 2023 to May 2025',
     award: ['Best AI Product', '2026 ARDY Awards', 'Awarded to ConversionIQ.ai'],
     cta: 'Book a strategy call',
     small: null,

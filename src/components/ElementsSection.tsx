@@ -83,7 +83,7 @@ export function ElementsSection() {
             </ElementCard>
             {/* Phones: the 720 px artboard would shrink its labels to about 6 px, so it holds at 544 px and scrolls sideways. */}
             <ElementCard ids={['conversion-stages']} themed replayable stage="grid-cols-1 bg-ground py-10 sm:px-10" className="md:col-span-2 xl:col-span-4">
-              <ScrollStage label="Conversion stages, scrolls sideways" hint="Swipe to see all four stages">
+              <ScrollStage label="Conversion stages, scrolls sideways" hint="Scroll sideways to see all four stages">
                 <div className="w-[37rem] px-6 sm:mx-auto sm:w-full sm:max-w-2xl sm:px-0">
                   <ElementGraphic id="conversion-stages" />
                 </div>
@@ -116,8 +116,8 @@ export function ElementsSection() {
 
         <div>
           <SubHeading title="Möbius loop">
-            The loop as a background graphic for ads: always big and cropped, running off the frame as it does behind the site&apos;s hero. Five crops, each
-            leaving one side quiet for copy, in two looks. Flattened JPGs are ready to place; transparent PNGs go on your own ground.
+            The loop as a background graphic for ads: always big and cropped, running off the frame as it does behind this hub&apos;s Overview hero. Five crops, each
+            leaving a quiet area for copy, in two looks. Flattened JPGs are ready to place; transparent PNGs go on your own ground.
           </SubHeading>
           <Reveal stagger>
             <MobiusSet />
@@ -125,7 +125,7 @@ export function ElementsSection() {
         </div>
 
         <div>
-          <SubHeading title="Patterns">Grounds to sit behind ad copy, 1080 × 1080 and full bleed. Each one fades across the frame, so set the copy where it is quiet.</SubHeading>
+          <SubHeading title="Patterns">Grounds to sit behind ad copy, 1080×1080 and full bleed. Each one fades across the frame, so set the copy where it is quiet.</SubHeading>
           {/*
             Two columns at most: at four across (about 210 px a card at 1280) the 1.5 px strokes of a 1080 px pattern
             shrink below half a pixel and the grid, contour and flow patterns all but vanish.

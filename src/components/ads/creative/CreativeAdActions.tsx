@@ -26,7 +26,7 @@ export function CreativeAdActions({ concept, inline = false }: { concept: Creati
         <DownloadMenu title={concept.name} className={push} files={files} />
       ) : (
         // No export manifest yet: say so where the download button would be (the lightbox still shows the live ad).
-        <span className={`${push} text-step-small text-text-3`}>Files on the way</span>
+        <span className={`${push} text-step-small text-text-3`}>Downloads for this ad are coming soon.</span>
       )}
     </div>
   )

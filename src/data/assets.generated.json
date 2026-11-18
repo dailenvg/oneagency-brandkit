@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-11-18T02:56:32.188Z",
-  "version": "Brand kit v1.1 · Updated 2026-11-17",
+  "generatedAt": "2026-11-18T12:53:33.384Z",
+  "version": "Brand kit v1.1 · Updated 2026-11-18",
   "groups": [
     {
       "id": "logos",
       "label": "Logos",
       "count": 58,
-      "bytes": 1021527,
+      "bytes": 1021702,
       "zip": {
         "url": "/kit/zips/one-agency_kit_logos.zip",
-        "bytes": 996324,
+        "bytes": 996654,
         "files": 58
       }
     },
@@ -20,7 +20,7 @@
       "bytes": 141059,
       "zip": {
         "url": "/kit/zips/one-agency_kit_colour.zip",
-        "bytes": 13286,
+        "bytes": 13441,
         "files": 2
       }
     },
@@ -31,7 +31,7 @@
       "bytes": 1768179,
       "zip": {
         "url": "/kit/zips/one-agency_kit_fonts.zip",
-        "bytes": 1114227,
+        "bytes": 1114382,
         "files": 15
       }
     },
@@ -42,7 +42,7 @@
       "bytes": 55187503,
       "zip": {
         "url": "/kit/zips/one-agency_kit_elements.zip",
-        "bytes": 54757358,
+        "bytes": 54757513,
         "files": 225
       }
     },
@@ -53,7 +53,7 @@
       "bytes": 39231717,
       "zip": {
         "url": "/kit/zips/one-agency_kit_glass.zip",
-        "bytes": 38758301,
+        "bytes": 38758456,
         "files": 71
       }
     },
@@ -64,8 +64,19 @@
       "bytes": 8555462,
       "zip": {
         "url": "/kit/zips/one-agency_kit_templates.zip",
-        "bytes": 8586637,
+        "bytes": 8586792,
         "files": 141
+      }
+    },
+    {
+      "id": "ads",
+      "label": "Creative ads",
+      "count": 80,
+      "bytes": 44322438,
+      "zip": {
+        "url": "/kit/zips/one-agency_kit_ads.zip",
+        "bytes": 44340176,
+        "files": 80
       }
     },
     {
@@ -75,7 +86,7 @@
       "bytes": 14389187,
       "zip": {
         "url": "/kit/zips/one-agency_kit_imagery.zip",
-        "bytes": 14404958,
+        "bytes": 14405113,
         "files": 80
       }
     },
@@ -86,7 +97,7 @@
       "bytes": 32662525,
       "zip": {
         "url": "/kit/zips/one-agency_kit_motion.zip",
-        "bytes": 33908371,
+        "bytes": 33908526,
         "files": 137
       }
     },
@@ -94,17 +105,17 @@
       "id": "copy",
       "label": "Copy",
       "count": 2,
-      "bytes": 17772,
+      "bytes": 17814,
       "zip": {
         "url": "/kit/zips/one-agency_kit_copy.zip",
-        "bytes": 5761,
+        "bytes": 5915,
         "files": 2
       }
     }
   ],
   "full": {
     "url": "/kit/zips/one-agency_kit_full.zip",
-    "bytes": 103711105,
+    "bytes": 103711441,
     "files": 567
   },
   "files": [
@@ -553,7 +564,7 @@
       "name": "one-agency_logo_og-image_1200x630.png",
       "group": "logos",
       "format": "PNG",
-      "bytes": 23603,
+      "bytes": 23778,
       "width": 1200,
       "height": 630,
       "duration": null,
@@ -5741,6 +5752,886 @@
       "preview": "/kit/templates/web-banners/one-agency_template-web-banners_wide-skyscraper_160x600.webp"
     },
     {
+      "url": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1080.png",
+      "name": "one-agency_ad-ai-visibility_1080x1080.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 830348,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1080.png"
+    },
+    {
+      "url": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1080.webp",
+      "name": "one-agency_ad-ai-visibility_1080x1080.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 74316,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1080.webp"
+    },
+    {
+      "url": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1350.png",
+      "name": "one-agency_ad-ai-visibility_1080x1350.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 995338,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1350.png"
+    },
+    {
+      "url": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1350.webp",
+      "name": "one-agency_ad-ai-visibility_1080x1350.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 81126,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1350.webp"
+    },
+    {
+      "url": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1920.png",
+      "name": "one-agency_ad-ai-visibility_1080x1920.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1292492,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1920.png"
+    },
+    {
+      "url": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1920.webp",
+      "name": "one-agency_ad-ai-visibility_1080x1920.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 87810,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1080x1920.webp"
+    },
+    {
+      "url": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1200x627.png",
+      "name": "one-agency_ad-ai-visibility_1200x627.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 634935,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1200x627.png"
+    },
+    {
+      "url": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1200x627.webp",
+      "name": "one-agency_ad-ai-visibility_1200x627.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 57724,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/ai-visibility/one-agency_ad-ai-visibility_1200x627.webp"
+    },
+    {
+      "url": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1080.png",
+      "name": "one-agency_ad-growth-audit_1080x1080.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 885457,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1080.png"
+    },
+    {
+      "url": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1080.webp",
+      "name": "one-agency_ad-growth-audit_1080x1080.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 84652,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1080.webp"
+    },
+    {
+      "url": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1350.png",
+      "name": "one-agency_ad-growth-audit_1080x1350.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1191806,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1350.png"
+    },
+    {
+      "url": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1350.webp",
+      "name": "one-agency_ad-growth-audit_1080x1350.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 106746,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1350.webp"
+    },
+    {
+      "url": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1920.png",
+      "name": "one-agency_ad-growth-audit_1080x1920.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1393845,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1920.png"
+    },
+    {
+      "url": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1920.webp",
+      "name": "one-agency_ad-growth-audit_1080x1920.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 97034,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1080x1920.webp"
+    },
+    {
+      "url": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1200x627.png",
+      "name": "one-agency_ad-growth-audit_1200x627.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 607326,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1200x627.png"
+    },
+    {
+      "url": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1200x627.webp",
+      "name": "one-agency_ad-growth-audit_1200x627.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 58138,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/growth-audit/one-agency_ad-growth-audit_1200x627.webp"
+    },
+    {
+      "url": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1080.png",
+      "name": "one-agency_ad-local-seo_1080x1080.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 866466,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1080.png"
+    },
+    {
+      "url": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1080.webp",
+      "name": "one-agency_ad-local-seo_1080x1080.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 79150,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1080.webp"
+    },
+    {
+      "url": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1350.png",
+      "name": "one-agency_ad-local-seo_1080x1350.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 965106,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1350.png"
+    },
+    {
+      "url": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1350.webp",
+      "name": "one-agency_ad-local-seo_1080x1350.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 77050,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1350.webp"
+    },
+    {
+      "url": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1920.png",
+      "name": "one-agency_ad-local-seo_1080x1920.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1332166,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1920.png"
+    },
+    {
+      "url": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1920.webp",
+      "name": "one-agency_ad-local-seo_1080x1920.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 90750,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1080x1920.webp"
+    },
+    {
+      "url": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1200x627.png",
+      "name": "one-agency_ad-local-seo_1200x627.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 660213,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1200x627.png"
+    },
+    {
+      "url": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1200x627.webp",
+      "name": "one-agency_ad-local-seo_1200x627.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 62138,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/local-seo/one-agency_ad-local-seo_1200x627.webp"
+    },
+    {
+      "url": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1080.png",
+      "name": "one-agency_ad-paid-search_1080x1080.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 833856,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1080.png"
+    },
+    {
+      "url": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1080.webp",
+      "name": "one-agency_ad-paid-search_1080x1080.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 102706,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1080.webp"
+    },
+    {
+      "url": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1350.png",
+      "name": "one-agency_ad-paid-search_1080x1350.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1012978,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1350.png"
+    },
+    {
+      "url": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1350.webp",
+      "name": "one-agency_ad-paid-search_1080x1350.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 107154,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1350.webp"
+    },
+    {
+      "url": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1920.png",
+      "name": "one-agency_ad-paid-search_1080x1920.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1288905,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1920.png"
+    },
+    {
+      "url": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1920.webp",
+      "name": "one-agency_ad-paid-search_1080x1920.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 107500,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1080x1920.webp"
+    },
+    {
+      "url": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1200x627.png",
+      "name": "one-agency_ad-paid-search_1200x627.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 626788,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1200x627.png"
+    },
+    {
+      "url": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1200x627.webp",
+      "name": "one-agency_ad-paid-search_1200x627.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 69960,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-search/one-agency_ad-paid-search_1200x627.webp"
+    },
+    {
+      "url": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1080.png",
+      "name": "one-agency_ad-paid-social_1080x1080.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 836619,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1080.png"
+    },
+    {
+      "url": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1080.webp",
+      "name": "one-agency_ad-paid-social_1080x1080.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 93596,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1080.webp"
+    },
+    {
+      "url": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1350.png",
+      "name": "one-agency_ad-paid-social_1080x1350.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1002230,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1350.png"
+    },
+    {
+      "url": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1350.webp",
+      "name": "one-agency_ad-paid-social_1080x1350.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 106962,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1350.webp"
+    },
+    {
+      "url": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1920.png",
+      "name": "one-agency_ad-paid-social_1080x1920.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1354647,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1920.png"
+    },
+    {
+      "url": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1920.webp",
+      "name": "one-agency_ad-paid-social_1080x1920.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 125130,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1080x1920.webp"
+    },
+    {
+      "url": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1200x627.png",
+      "name": "one-agency_ad-paid-social_1200x627.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 634594,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1200x627.png"
+    },
+    {
+      "url": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1200x627.webp",
+      "name": "one-agency_ad-paid-social_1200x627.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 78056,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/paid-social/one-agency_ad-paid-social_1200x627.webp"
+    },
+    {
+      "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1080.png",
+      "name": "one-agency_ad-results_1080x1080.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 968878,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/results/one-agency_ad-results_1080x1080.png"
+    },
+    {
+      "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1080.webp",
+      "name": "one-agency_ad-results_1080x1080.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 78760,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/results/one-agency_ad-results_1080x1080.webp"
+    },
+    {
+      "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1350.png",
+      "name": "one-agency_ad-results_1080x1350.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1199034,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/results/one-agency_ad-results_1080x1350.png"
+    },
+    {
+      "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1350.webp",
+      "name": "one-agency_ad-results_1080x1350.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 80560,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/results/one-agency_ad-results_1080x1350.webp"
+    },
+    {
+      "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1920.png",
+      "name": "one-agency_ad-results_1080x1920.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1763684,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/results/one-agency_ad-results_1080x1920.png"
+    },
+    {
+      "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1920.webp",
+      "name": "one-agency_ad-results_1080x1920.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 106466,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/results/one-agency_ad-results_1080x1920.webp"
+    },
+    {
+      "url": "/kit/ads/creative/results/one-agency_ad-results_1200x627.png",
+      "name": "one-agency_ad-results_1200x627.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 744907,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/results/one-agency_ad-results_1200x627.png"
+    },
+    {
+      "url": "/kit/ads/creative/results/one-agency_ad-results_1200x627.webp",
+      "name": "one-agency_ad-results_1200x627.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 57078,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/results/one-agency_ad-results_1200x627.webp"
+    },
+    {
+      "url": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1080.png",
+      "name": "one-agency_ad-technology_1080x1080.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1059030,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1080.png"
+    },
+    {
+      "url": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1080.webp",
+      "name": "one-agency_ad-technology_1080x1080.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 92972,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1080.webp"
+    },
+    {
+      "url": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1350.png",
+      "name": "one-agency_ad-technology_1080x1350.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1285635,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1350.png"
+    },
+    {
+      "url": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1350.webp",
+      "name": "one-agency_ad-technology_1080x1350.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 103552,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1350.webp"
+    },
+    {
+      "url": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1920.png",
+      "name": "one-agency_ad-technology_1080x1920.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1841305,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1920.png"
+    },
+    {
+      "url": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1920.webp",
+      "name": "one-agency_ad-technology_1080x1920.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 121516,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/technology/one-agency_ad-technology_1080x1920.webp"
+    },
+    {
+      "url": "/kit/ads/creative/technology/one-agency_ad-technology_1200x627.png",
+      "name": "one-agency_ad-technology_1200x627.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 773419,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/technology/one-agency_ad-technology_1200x627.png"
+    },
+    {
+      "url": "/kit/ads/creative/technology/one-agency_ad-technology_1200x627.webp",
+      "name": "one-agency_ad-technology_1200x627.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 63386,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/technology/one-agency_ad-technology_1200x627.webp"
+    },
+    {
+      "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1080.png",
+      "name": "one-agency_ad-testimonial_1080x1080.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 954832,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1080.png"
+    },
+    {
+      "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1080.webp",
+      "name": "one-agency_ad-testimonial_1080x1080.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 60914,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1080.webp"
+    },
+    {
+      "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1350.png",
+      "name": "one-agency_ad-testimonial_1080x1350.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1194392,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1350.png"
+    },
+    {
+      "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1350.webp",
+      "name": "one-agency_ad-testimonial_1080x1350.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 68190,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1350.webp"
+    },
+    {
+      "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1920.png",
+      "name": "one-agency_ad-testimonial_1080x1920.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1550076,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1920.png"
+    },
+    {
+      "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1920.webp",
+      "name": "one-agency_ad-testimonial_1080x1920.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 72566,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1920.webp"
+    },
+    {
+      "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1200x627.png",
+      "name": "one-agency_ad-testimonial_1200x627.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 613571,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1200x627.png"
+    },
+    {
+      "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1200x627.webp",
+      "name": "one-agency_ad-testimonial_1200x627.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 72890,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1200x627.webp"
+    },
+    {
+      "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1080.png",
+      "name": "one-agency_ad-vacation-ownership_1080x1080.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 891212,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1080.png"
+    },
+    {
+      "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1080.webp",
+      "name": "one-agency_ad-vacation-ownership_1080x1080.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 78278,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1080.webp"
+    },
+    {
+      "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1350.png",
+      "name": "one-agency_ad-vacation-ownership_1080x1350.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1036204,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1350.png"
+    },
+    {
+      "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1350.webp",
+      "name": "one-agency_ad-vacation-ownership_1080x1350.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 96998,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1350.webp"
+    },
+    {
+      "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1920.png",
+      "name": "one-agency_ad-vacation-ownership_1080x1920.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1499074,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1920.png"
+    },
+    {
+      "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1920.webp",
+      "name": "one-agency_ad-vacation-ownership_1080x1920.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 113360,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1920.webp"
+    },
+    {
+      "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1200x627.png",
+      "name": "one-agency_ad-vacation-ownership_1200x627.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 622712,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1200x627.png"
+    },
+    {
+      "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1200x627.webp",
+      "name": "one-agency_ad-vacation-ownership_1200x627.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 60470,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1200x627.webp"
+    },
+    {
+      "url": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1080.png",
+      "name": "one-agency_ad-web-design_1080x1080.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 747257,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1080.png"
+    },
+    {
+      "url": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1080.webp",
+      "name": "one-agency_ad-web-design_1080x1080.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 68636,
+      "width": 1080,
+      "height": 1080,
+      "duration": null,
+      "preview": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1080.webp"
+    },
+    {
+      "url": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1350.png",
+      "name": "one-agency_ad-web-design_1080x1350.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1046204,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1350.png"
+    },
+    {
+      "url": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1350.webp",
+      "name": "one-agency_ad-web-design_1080x1350.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 90350,
+      "width": 1080,
+      "height": 1350,
+      "duration": null,
+      "preview": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1350.webp"
+    },
+    {
+      "url": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1920.png",
+      "name": "one-agency_ad-web-design_1080x1920.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 1332161,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1920.png"
+    },
+    {
+      "url": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1920.webp",
+      "name": "one-agency_ad-web-design_1080x1920.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 94312,
+      "width": 1080,
+      "height": 1920,
+      "duration": null,
+      "preview": "/kit/ads/creative/web-design/one-agency_ad-web-design_1080x1920.webp"
+    },
+    {
+      "url": "/kit/ads/creative/web-design/one-agency_ad-web-design_1200x627.png",
+      "name": "one-agency_ad-web-design_1200x627.png",
+      "group": "ads",
+      "format": "PNG",
+      "bytes": 572936,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/web-design/one-agency_ad-web-design_1200x627.png"
+    },
+    {
+      "url": "/kit/ads/creative/web-design/one-agency_ad-web-design_1200x627.webp",
+      "name": "one-agency_ad-web-design_1200x627.webp",
+      "group": "ads",
+      "format": "WEBP",
+      "bytes": 50848,
+      "width": 1200,
+      "height": 627,
+      "duration": null,
+      "preview": "/kit/ads/creative/web-design/one-agency_ad-web-design_1200x627.webp"
+    },
+    {
       "url": "/kit/imagery/one-agency_image-admissions_1080x1080.jpg",
       "name": "one-agency_image-admissions_1080x1080.jpg",
       "group": "imagery",
@@ -7043,7 +7934,7 @@
       "name": "one-agency_copy-bank.json",
       "group": "copy",
       "format": "JSON",
-      "bytes": 11519,
+      "bytes": 11540,
       "width": null,
       "height": null,
       "duration": null,
@@ -7054,7 +7945,7 @@
       "name": "one-agency_copy-bank.md",
       "group": "copy",
       "format": "MD",
-      "bytes": 6253,
+      "bytes": 6274,
       "width": null,
       "height": null,
       "duration": null,

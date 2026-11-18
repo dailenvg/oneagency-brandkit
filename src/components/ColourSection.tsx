@@ -92,7 +92,7 @@ export function ColourSection() {
 
         <SourceNote>
           Pulled from <a href={TOKEN_SOURCE.url}>the live stylesheet</a> on {TOKEN_SOURCE.snapshot}. {TOKEN_SOURCE.note} The rebrand task&apos;s palette (Ink, White,
-          Vermilion, Stone; &ldquo;no blue, no gradients&rdquo;) is not used: the ticket rule is that the live site wins for colour.
+          Vermilion, Stone; &ldquo;no blue, no gradients&rdquo;) is not used: the kit's rule is that the live site wins for colour.
         </SourceNote>
       </div>
     </Section>

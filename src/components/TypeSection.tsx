@@ -49,7 +49,7 @@ export function TypeSection() {
 
         <SourceNote>
           The rebrand task names Bricolage Grotesque as the headline face, but the live site loads Geist, Lato and Metal. This kit follows the live site; the
-          difference is logged for the ticket.
+          difference is noted in the brand kit brief.
         </SourceNote>
       </div>
     </Section>

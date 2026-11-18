@@ -140,7 +140,15 @@ export const sequence = (step: number = stagger.word, delay = 0): Variants => ({
 /** Word rise: per word, blur and rise in. */
 export const wordRise: Variants = {
   hidden: { opacity: 0, y: distance.riseY, filter: `blur(${distance.riseBlur}px)` },
-  show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: duration.move, ease: easeOutCubic } },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: duration.move, ease: easeOutCubic },
+    // Once the word has landed it drops the filter (blur(0px) looks the same but isolates the word), so an accent
+    // word's neon light and Add blend reach the ground behind the title.
+    transitionEnd: { filter: 'none' },
+  },
 }
 
 /** Letter hop: alternating lift and tilt, back-out landing. `custom` is the letter index. */

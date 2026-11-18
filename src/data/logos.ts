@@ -566,6 +566,6 @@ export const SOCIAL_IMAGES: IconFile[] = [
     "width": 1200,
     "height": 630,
     "url": "/kit/logos/social/one-agency_logo_og-image_1200x630.png",
-    "bytes": 23603
+    "bytes": 23778
   }
 ]

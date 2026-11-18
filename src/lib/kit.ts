@@ -7,7 +7,7 @@ export const KIT = {
   version: '1.1',
   /** The release before this one, for the "what's new" note. */
   previousVersion: '1.0',
-  updated: '2026-11-17',
+  updated: '2026-11-18',
   site: 'https://oneagency.com',
   liveCss: 'https://oneagency.com/assets/css/home.bundle.css?v=746d4bae1d',
   liveCssPulled: '2026-11-17',
@@ -26,6 +26,7 @@ export const ASSET_GROUPS = [
   { id: 'elements', label: 'Elements' },
   { id: 'glass', label: 'Glass & texture', paths: ['kit/illustrations', 'kit/textures', 'kit/references', 'vendor/ciq/README.md'] },
   { id: 'templates', label: 'Templates' },
+  { id: 'ads', label: 'Creative ads' },
   { id: 'imagery', label: 'Imagery' },
   { id: 'motion', label: 'Motion' },
   { id: 'copy', label: 'Copy' },

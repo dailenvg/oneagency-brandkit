@@ -28,15 +28,19 @@ export function AdsSection() {
       accent={[0]}
       lede="Ten ready-to-run ad concepts built from the kit's glass components, with every claim and figure taken from oneagency.com. Download any size as PNG or WebP, or open it at true size."
       actions={
-        <>
+        // Three actions, one lead: the creative ads ZIP is the secondary pill every view uses for its ZIP; templates and the
+        // outbound Magnific link step down to quiet. Phones stack them full width; tablets wrap them in a row; from xl,
+        // where the header sits beside the title, they stack in one equal-width column so the lede keeps its measure.
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap xl:flex-col">
+          <ZipButton group="ads" label="All creative ads" />
+          <ZipButton group="templates" label="All templates" variant="quiet" />
           {magnific && (
             <ButtonLink href={magnific} external variant="quiet">
               Magnific brand kit
               <ArrowUpRight aria-hidden />
             </ButtonLink>
           )}
-          <ZipButton group="templates" label="All templates" />
-        </>
+        </div>
       }
     >
       <div className="flex flex-col gap-section">
@@ -44,7 +48,7 @@ export function AdsSection() {
 
         <div>
           <SubHeading title="Creative ads" badge={<Badge>{CREATIVE_CONCEPTS.length * CREATIVE_AD_SIZES.length} ads</Badge>}>
-            {CREATIVE_CONCEPTS.length} concepts in {CREATIVE_AD_SIZES.length} sizes: square, portrait, story (top 220 px and bottom 340 px kept clear) and landscape.
+            {CREATIVE_CONCEPTS.length} concepts in {CREATIVE_AD_SIZES.length} sizes: square, portrait, story and landscape.
             Each layout recomposes for its size. Client figures carry their client, and their date where the site gives one.
           </SubHeading>
           <CreativeGallery />
@@ -59,7 +63,7 @@ export function AdsSection() {
 
         <div>
           <SubHeading title="Templates and samples" badge={<Badge>Magnific</Badge>}>
-            Editable templates in every ticket size and the sample ads set in them, by channel.
+            Editable templates in every channel size and the sample ads set in them, by channel.
           </SubHeading>
           <TemplatesAndSamples />
         </div>

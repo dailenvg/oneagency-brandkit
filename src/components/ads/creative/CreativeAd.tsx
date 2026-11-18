@@ -1,3 +1,4 @@
+import { Quotes } from '@phosphor-icons/react'
 import type { CSSProperties } from 'react'
 import { mobiusStill, type CreativeAdConcept, type CreativeAdSize, type CreativeFormat } from '../../../data/ad-creative'
 import { AdCanvas } from './AdCanvas'
@@ -121,7 +122,8 @@ export function CreativeAd({ concept, size, scale = 1 }: CreativeAdProps) {
         <div className={`flex min-h-0 flex-1 flex-col ${centre ? 'items-center text-center' : 'items-start'} ${format === 'landscape' ? 'w-[54%]' : ''}`}>
           <div data-part="header" className={`relative z-10 flex flex-col gap-3 ${tall ? 'mt-7' : 'mt-5'} ${arrangement === 'beside' ? 'w-[47%]' : 'w-full'} ${arrangement === 'landscape' ? 'mt-3' : ''} ${centreCopy ? 'my-auto' : ''}`}>
             {showEyebrow && <AdEyebrow text={concept.eyebrow!} format={format} />}
-            {showHeadline && <AdHeadline concept={concept} format={format} scale={centreCopy ? 0.92 : headlineScale(concept.headline, narrow) * (arrangement === 'landscape' ? 0.92 : 1)} />}
+            {showHeadline && concept.quote && <Quotes weight="fill" aria-hidden className="size-8 text-rose" />}
+            {showHeadline && <AdHeadline concept={concept} format={format} scale={centreCopy ? 0.82 : headlineScale(concept.headline, narrow) * (arrangement === 'landscape' ? 0.92 : 1)} />}
             {showHeadline && concept.quote && concept.attribution && <p style={{ ...adText('statLabel', format), color: 'var(--text-2)' }}>{concept.attribution}</p>}
             {concept.sub && <p style={adText('subhead', format, 0.62)}>{concept.sub}</p>}
           </div>

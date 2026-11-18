@@ -1,6 +1,6 @@
 /**
  * The Möbius loop as ad stills: always big and cropped, a background graphic that bleeds off the frame the way the
- * loop runs behind oneagency.com's hero, never the whole loop shrunk into the middle. scripts/build-mobius.mjs imports
+ * loop runs behind this hub's Overview hero, never the whole loop shrunk into the middle. scripts/build-mobius.mjs imports
  * this file to render the set, so it stays import-free.
  *
  * File names follow the kit convention:
@@ -98,7 +98,7 @@ export const MOBIUS_CROPS: readonly MobiusCrop[] = [
   {
     id: 'sweep',
     label: 'Sweep',
-    copy: 'The strands cross at the top and curve down the right, as on the site hero. Copy goes bottom left.',
+    copy: 'The strands cross at the top and curve down the right, as behind the Overview hero. Copy goes bottom left.',
     scale: 2.6,
     anchor: [0.9, 0.18],
     to: [0.72, 0.3],

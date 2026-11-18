@@ -1,14 +1,17 @@
-import { ArrowClockwise, FileDashed, WarningCircle } from '@phosphor-icons/react'
+import { FileDashed, WarningCircle } from '@phosphor-icons/react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useMemo, useState } from 'react'
 import { ASSET_MANIFEST } from '../lib/assets'
 import type { AssetGroupId } from '../lib/kit'
+import { usesMobius } from '../lib/mobius-assets'
+import { MobiusCreditLine } from './ads/creative/MobiusCredit'
 import { AssetRow } from './assets/AssetRow'
 import { Section } from './layout/Section'
 import { Button } from './ui/Button'
 import { EmptyState } from './ui/EmptyState'
 import { FilterTabs } from './ui/FilterTabs'
 import { FullKitButton } from './ui/FullKitButton'
+import { ReloadButton } from './ui/ReloadButton'
 import { ZipButton } from './ui/ZipButton'
 
 type Filter = AssetGroupId | 'all'
@@ -35,10 +38,7 @@ export function AssetsSection() {
           tone="error"
           title="The file list did not load"
           action={
-            <Button variant="secondary" onClick={() => window.location.reload()}>
-              <ArrowClockwise className="size-5" aria-hidden />
-              Reload
-            </Button>
+            <ReloadButton />
           }
         >
           Reload the page. If the list is still missing, the kit is being updated; every view still has its own downloads.
@@ -49,6 +49,9 @@ export function AssetsSection() {
 
   const files = filter === 'all' ? manifest.files : manifest.files.filter((f) => f.group === filter)
   const group = manifest.groups.find((g) => g.id === filter)
+  // Any file in this list that shows ConversionIQ's loop (Möbius stills, ads on the loop): credit it above the list too,
+  // since the rows that carry it may sit past the first page.
+  const showsMobius = files.some((f) => usesMobius(f.url))
 
   return (
     <Section
@@ -77,6 +80,11 @@ export function AssetsSection() {
 
         {/* The tabpanel wraps the list (a role on the <ul> would drop its list semantics) and the empty state. */}
         <div id="asset-list" role="tabpanel" aria-label={group ? `Files: ${group.label}` : 'Files: all'}>
+          {showsMobius && (
+            <div className="mb-4">
+              <MobiusCreditLine />
+            </div>
+          )}
           {files.length ? (
             <motion.ul layout className="grid gap-3 lg:grid-cols-2">
               <AnimatePresence mode="popLayout" initial={false}>

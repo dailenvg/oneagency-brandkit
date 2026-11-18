@@ -94,7 +94,7 @@ export const COPY: CopyLine[] = [
 
   { id: 'c-audit', group: 'cta', text: 'Start My 5-Minute Audit', source: LIVE, date: LIVE_DATE },
   { id: 'c-free', group: 'cta', text: 'Run My Free Audit', source: LIVE, date: LIVE_DATE },
-  { id: 'c-talk', group: 'cta', text: 'Talk to ONE Agency', source: 'Sample ad C (CD approved)', date: '2026-11-17' },
+  { id: 'c-talk', group: 'cta', text: 'Talk to ONE Agency', source: 'Sample ad C, approved 2026-11-17', date: '2026-11-17' },
   { id: 'c-growth', group: 'cta', text: 'Run the growth audit', source: LIVE, date: LIVE_DATE },
   { id: 'c-chattibiz', group: 'cta', text: 'Run my ChattiBiz Growth Audit', source: LIVE, date: LIVE_DATE },
   { id: 'c-contact', group: 'cta', text: 'Contact ONE Agency', source: LIVE, date: LIVE_DATE },
@@ -142,7 +142,7 @@ export const COPY: CopyLine[] = [
     note: 'Client-reported, an estimate ("I think 22"). Attendance, not sales. Label it client-reported.',
   },
 
-  { id: 'l-figures', group: 'legal', text: 'Figures as published on oneagency.com, November 2026.', source: 'Sample ad B (CD approved)', date: '2026-11-17' },
+  { id: 'l-figures', group: 'legal', text: 'Figures as published on oneagency.com, November 2026.', source: 'Sample ad B, approved 2026-11-17', date: '2026-11-17' },
   { id: 'l-award', group: 'legal', text: 'Awarded to ConversionIQ.ai', source: LIVE, date: LIVE_DATE, note: 'Required wherever the award appears.' },
   {
     id: 'l-ardy',
@@ -162,5 +162,5 @@ export const COPY: CopyLine[] = [
     note: 'The certification belongs to the platform, not to ONE Agency as an agency.',
   },
   { id: 'l-copyright', group: 'legal', text: '© 2026 ONE Agency, LLC. All rights reserved.', source: LIVE, date: LIVE_DATE },
-  { id: 'l-contact', group: 'legal', text: '(689) 205-9923 · oneagency.com', source: 'Sample ad C (CD approved)', date: '2026-11-17' },
+  { id: 'l-contact', group: 'legal', text: '(689) 205-9923 · oneagency.com', source: 'Sample ad C, approved 2026-11-17', date: '2026-11-17' },
 ]

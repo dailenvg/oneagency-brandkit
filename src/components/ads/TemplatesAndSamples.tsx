@@ -14,7 +14,7 @@ import { PlannedSizes } from './PlannedSizes'
 type Filter = AdChannel | 'all'
 
 const GROUPS: { id: Exclude<AdGroup, 'imagery'>; title: string; intro: string }[] = [
-  { id: 'template', title: 'Templates', intro: 'Editable in Magnific, with placeholder copy. Every ticket size.' },
+  { id: 'template', title: 'Templates', intro: 'Editable in Magnific, with placeholder copy. Every channel size.' },
   { id: 'sample', title: 'Sample ads', intro: 'The three approved concepts set in the templates.' },
 ]
 
@@ -121,7 +121,7 @@ export function TemplatesAndSamples() {
                 <ManifestNotice what="ad templates and sample ads" />
                 <div>
                   <h3 className="mb-1 text-step-1 font-semibold">Sizes on the way</h3>
-                  <p className="mb-6 text-step--1 text-text-2">Every size in the ticket, drawn to scale. Each one fills in when its Magnific template lands.</p>
+                  <p className="mb-6 text-step--1 text-text-2">Every planned size, drawn to scale. Each one fills in when its Magnific template lands.</p>
                   <PlannedSizes />
                 </div>
               </div>

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T02:37:15.357Z",
+  "generatedAt": "2026-11-18T03:55:21.237Z",
   "items": [
     {
       "concept": "ai-visibility",
@@ -457,11 +457,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1080.png",
-          "bytes": 1024460
+          "bytes": 968878
         },
         "webp": {
           "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1080.webp",
-          "bytes": 85940
+          "bytes": 78760
         }
       }
     },
@@ -473,11 +473,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1350.png",
-          "bytes": 1181969
+          "bytes": 1199034
         },
         "webp": {
           "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1350.webp",
-          "bytes": 82260
+          "bytes": 80560
         }
       }
     },
@@ -489,11 +489,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1920.png",
-          "bytes": 1771891
+          "bytes": 1763684
         },
         "webp": {
           "url": "/kit/ads/creative/results/one-agency_ad-results_1080x1920.webp",
-          "bytes": 107552
+          "bytes": 106466
         }
       }
     },
@@ -505,11 +505,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/results/one-agency_ad-results_1200x627.png",
-          "bytes": 725462
+          "bytes": 744907
         },
         "webp": {
           "url": "/kit/ads/creative/results/one-agency_ad-results_1200x627.webp",
-          "bytes": 56874
+          "bytes": 57078
         }
       }
     },
@@ -521,11 +521,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1080.png",
-          "bytes": 890840
+          "bytes": 891212
         },
         "webp": {
           "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1080.webp",
-          "bytes": 78078
+          "bytes": 78278
         }
       }
     },
@@ -537,11 +537,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1350.png",
-          "bytes": 1035726
+          "bytes": 1036204
         },
         "webp": {
           "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1350.webp",
-          "bytes": 96828
+          "bytes": 96998
         }
       }
     },
@@ -553,11 +553,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1920.png",
-          "bytes": 1498517
+          "bytes": 1499074
         },
         "webp": {
           "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1080x1920.webp",
-          "bytes": 113198
+          "bytes": 113360
         }
       }
     },
@@ -569,11 +569,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1200x627.png",
-          "bytes": 622306
+          "bytes": 622712
         },
         "webp": {
           "url": "/kit/ads/creative/vacation-ownership/one-agency_ad-vacation-ownership_1200x627.webp",
-          "bytes": 60344
+          "bytes": 60470
         }
       }
     },
@@ -585,11 +585,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1080.png",
-          "bytes": 955156
+          "bytes": 954832
         },
         "webp": {
           "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1080.webp",
-          "bytes": 61428
+          "bytes": 60914
         }
       }
     },
@@ -601,11 +601,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1350.png",
-          "bytes": 1194545
+          "bytes": 1194392
         },
         "webp": {
           "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1350.webp",
-          "bytes": 68704
+          "bytes": 68190
         }
       }
     },
@@ -617,11 +617,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1920.png",
-          "bytes": 1550482
+          "bytes": 1550076
         },
         "webp": {
           "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1080x1920.webp",
-          "bytes": 73140
+          "bytes": 72566
         }
       }
     },
@@ -633,11 +633,11 @@
       "files": {
         "png": {
           "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1200x627.png",
-          "bytes": 621199
+          "bytes": 613571
         },
         "webp": {
           "url": "/kit/ads/creative/testimonial/one-agency_ad-testimonial_1200x627.webp",
-          "bytes": 74600
+          "bytes": 72890
         }
       }
     }

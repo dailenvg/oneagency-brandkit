@@ -3,6 +3,7 @@ import { useId, useState, type CSSProperties } from 'react'
 import { MOBIUS_CROPS, MOBIUS_LOOKS, MOBIUS_SIZES, mobiusDownloads, mobiusPreviewUrl, type MobiusGround, type MobiusLook } from '../../data/mobius'
 import { fade, reveal, sequence, stagger, swap } from '../../lib/motion'
 import { getTheme } from '../../lib/theme'
+import { MobiusCreditLine } from '../ads/creative/MobiusCredit'
 import { Badge } from '../ui/Badge'
 import { DownloadMenu } from '../ui/DownloadMenu'
 import { FilterTabs } from '../ui/FilterTabs'
@@ -138,6 +139,7 @@ export function MobiusSet() {
         <p className="text-step-small text-text-2">
           {crop.copy} {look.use}
         </p>
+        <MobiusCreditLine />
         <div className="flex items-center justify-between gap-2">
           <p className="text-step-small text-text-3">{format} at the four sizes shown above.</p>
           <DownloadMenu title={`${name}, ${ground.label}, ${format}`} files={mobiusDownloads(look, crop, ground)} />

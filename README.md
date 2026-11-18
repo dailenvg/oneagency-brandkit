@@ -1,7 +1,7 @@
 # ONE Agency Brand Kit
 
 The hosted ONE Agency brand kit: guidelines plus every downloadable asset (logos, colour, type, motion, templates,
-imagery, copy, glass and texture). Digital only: RGB, px, SVG/PNG/JPG/WebP and web fonts. Version 1.1, 2026-11-17.
+imagery, copy, glass and texture). Digital only: RGB, px, SVG/PNG/JPG/WebP and web fonts. Version 1.1, 2026-11-18.
 
 ## The hub (v1.1)
 
@@ -24,8 +24,10 @@ used ZIPs are on Overview. The v1.0 anchors (`#logo`, `#top`) still work and are
   Live tokens are never redefined, so swatches and the contrast matrix stay true. Brand specimens (logo on dark,
   element stages, ad text, CTA rows) pin their ground with `data-theme="dark"` or `"light"` on the stage.
 - **Möbius loop**: `public/vendor/ciq/ciq-loop.js` is ConversionIQ's key visual, copied byte for byte with its README.
-  It loads only on Overview (`src/components/overview/MobiusLoop.tsx`), follows the hub theme, pauses while the tab is
-  hidden and is removed when you leave the view. Credit in the UI: "Möbius loop: ConversionIQ key visual, used as
+  Live, it runs behind the Overview hero (`src/components/overview/MobiusLoop.tsx`): it follows the hub theme, pauses
+  while the tab is hidden and is removed when you leave the view. In the kit it ships as stills
+  (`public/kit/elements/mobius/`, `npm run kit:mobius`), and three creative ads (technology, results,
+  vacation-ownership) are built on them. Credit wherever it appears: "Möbius loop: ConversionIQ key visual, used as
   supplied." Never edit, redraw or recolour it.
 
 ## Sources
@@ -62,7 +64,7 @@ Playwright (asset rendering). Python 3 with `fonttools` and `brotli` for the fon
 | `npm run kit:logos` | `scripts/build-logos.mjs`: logo lockups and variants (SVG + PNG @1x/@2x/@4x), favicons, social avatar and OG image to `public/kit/logos/`, plus `src/data/logos.ts`. Add `-- --contact <file.png>` for a review contact sheet. Needs `kit:tokens` first. |
 | `npm run kit:motion` | `scripts/build-motion.mjs`: bundles the framework-free motion runtime to `public/kit/motion/one-motion.{js,mjs}`. |
 | `npm run kit:elements` | `scripts/build-elements.mjs`: graphic elements as SVG + PNG and the Phosphor ad icons to `public/kit/elements/` (list in `src/data/elements.ts`). The signature devices, patterns and illustrations are the React components in `src/kit/graphics/`, rendered to static SVG through Vite's SSR loader, once on dark and once on light. |
-| `npm run kit:mobius` | `scripts/build-mobius.mjs`: the Möbius loop (`public/vendor/ciq/ciq-loop.js`) held on one frame in Playwright and placed big and cropped, bleeding off the frame like the site hero, in five crops (sweep, band top, band bottom, side, frame), energy and strings looks, flattened on navy and paper (JPG) and transparent (PNG), at 1080x1080, 1080x1350, 1080x1920 and 1200x628, to `public/kit/elements/mobius/` (crops and placements in `src/data/mobius.ts`), with half-size WebP previews in `public/previews/elements/mobius/` (display only). |
+| `npm run kit:mobius` | `scripts/build-mobius.mjs`: the Möbius loop (`public/vendor/ciq/ciq-loop.js`) held on one frame in Playwright and placed big and cropped, bleeding off the frame like the hub's Overview hero, in five crops (sweep, band top, band bottom, side, frame), energy and strings looks, flattened on navy and paper (JPG) and transparent (PNG), at 1080x1080, 1080x1350, 1080x1920 and 1200x628, to `public/kit/elements/mobius/` (crops and placements in `src/data/mobius.ts`), with half-size WebP previews in `public/previews/elements/mobius/` (display only). |
 | `npm run kit:copy` | `scripts/build-copy.mjs`: exports `src/data/copy.ts` to `public/kit/copy/one-agency_copy-bank.{md,json}`. |
 | `npm run kit:motion-ads` | `scripts/build-motion-ads.mjs` writes the nine HTML5 ads (3 concepts x 1080x1920, 1080x1080, 300x250) to `public/kit/motion/ads/` plus an HTML5 ZIP each; `scripts/export-motion-ads.mjs` renders them frame by frame (Playwright, `oneAd.seek(t)`) to MP4 (ffmpeg), GIF (300x250 under 3 MB) and an end-frame PNG in `public/kit/motion/exports/`. Without ffmpeg it records WebM instead and skips the GIF. `node scripts/export-motion-ads.mjs --stills` renders end frames only. |
 | `npm run kit:references` | `scripts/copy-references.mjs [folder]`: copies the nine reference ads (default `../Ads`) to `public/kit/references/one-agency_reference-ad_[slug]_1254x1254.png` and writes WebP previews to `public/previews/references/` (display only). Names and alt text live in `src/data/glass-references.ts`. Skips when the folder is not there. |
@@ -103,16 +105,16 @@ src/
 | `copy/` | the copy bank, Markdown and JSON |
 | `templates/`, `imagery/` | written by the Magnific export, with `src/data/ads.generated.json` (not generated here) |
 | `illustrations/`, `textures/` | glass illustrations and textures, written by the Magnific export with `src/data/glass.generated.json` |
-| `ads/creative/` | the creative ads, PNG and WebP per concept and size (`npm run kit:ads`); not in a ZIP group yet |
+| `ads/creative/` | the creative ads, PNG and WebP per concept and size (`npm run kit:ads`); in their own ZIP (`one-agency_kit_ads.zip`), not in the full kit |
 | `references/` | the nine reference ads the glass style comes from (`npm run kit:references`) |
 | `zips/` | per-group and full-kit ZIPs (`npm run kit:zips`) |
 
 Download groups are folders under `public/kit/`, except `glass`, which collects `illustrations/`, `textures/`,
-`references/` and `public/vendor/ciq/README.md` (the loop's credit; the script itself is not in the kit). The groups and
+`references/` and `public/vendor/ciq/README.md` (the loop's credit; the kit carries the loop as stills, not the script). The groups and
 their paths are in `src/lib/kit.ts`. To stay under GitHub's 100 MiB file limit, `one-agency_kit_full.zip` carries
-illustrations as PNG only (their WebP twins are in the glass ZIP) and leaves out the Möbius stills (`elements/mobius/`,
-in the elements ZIP), and says so in its README.txt. Watch its size when
-adding files (the current size is printed by `npm run kit:zips`). The next lever, if it is needed: leave the six 1080 px
+illustrations as PNG only (their WebP twins are in the glass ZIP), leaves out the Möbius stills (`elements/mobius/`, in
+the elements ZIP) and the creative ads (`ads/creative/`, in the ads ZIP), and says so in its README.txt. Watch its size
+when adding files (the current size is printed by `npm run kit:zips`). The next lever, if it is needed: leave the six 1080 px
 motion GIFs out of the full ZIP only (the MP4s carry the same ads).
 
 File names follow `one-agency_[asset]_[variant]_[size].[ext]`, for example

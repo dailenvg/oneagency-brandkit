@@ -194,6 +194,25 @@
     mix-blend-mode: normal;
   }
   /*
+   * Forced colours (Windows contrast themes) drop gradient backgrounds but keep the transparent text, so lit words and
+   * figures would vanish: set them in the system text colour, unlit.
+   */
+  @media (forced-colors: active) {
+    :is(.accent-word, .stat-num) {
+      background: none;
+      color: CanvasText;
+      filter: none;
+      mix-blend-mode: normal;
+    }
+  }
+  /* More contrast asked for: the gradient stays, the neon light and its blend go, so the glyph edges stay crisp. */
+  @media (prefers-contrast: more) {
+    :is(.accent-word, .stat-num) {
+      filter: none;
+      mix-blend-mode: normal;
+    }
+  }
+  /*
    * The site's hero glow field: rose top-left, lilac bottom-right, on the ground. Sized in % of the box, the same
    * proportions as the downloadable one-agency_element_glow-field.svg (ellipses 62x42% and 68x48%, linear falloff), so a
    * small stage shows the same composition as the file: two separate glows with night-navy between, not one wash.

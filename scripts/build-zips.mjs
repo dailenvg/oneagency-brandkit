@@ -3,7 +3,7 @@
  * Builds the download ZIPs and the asset list from whatever is in public/kit/ right now, so it can be re-run any time
  * (for example after the Magnific templates and imagery land):
  *   public/kit/zips/one-agency_kit_[group].zip   one per group with files (logos, colour, fonts, elements, glass,
- *                                                templates, imagery, motion, copy)
+ *                                                templates, ads, imagery, motion, copy)
  *   public/kit/zips/one-agency_kit_full.zip      everything, under one-agency_kit/
  *   src/data/assets.generated.json              every listed file with format, dimensions, size and preview
  *
@@ -11,9 +11,10 @@
  * the ConversionIQ credit). Inside the ZIPs, paths drop the leading kit/.
  *
  * The full kit keeps one raster format per illustration: the WebP twin of an illustration PNG is left out of
- * one-agency_kit_full.zip (and said so in its README) to stay under GitHub's 100 MiB file limit. The glass ZIP has both.
- * For the same reason the Möbius stills (elements/mobius/, rendered by scripts/build-mobius.mjs) are in the elements
- * ZIP and on the site but not in the full kit.
+ * one-agency_kit_full.zip (its README says so) to stay under GitHub's 100 MiB file limit. The glass ZIP has both.
+ * For the same reason, the Möbius stills (elements/mobius/, rendered by scripts/build-mobius.mjs) and the creative ads
+ * (ads/creative/, rendered by scripts/export-creative-ads.mjs) are on the site and in their group ZIPs (elements and
+ * ads) but not in the full kit.
  *
  * The HTML5 ad source folders (motion/ads/) go into the ZIPs but are not listed one by one: each ad is listed as its
  * package, motion/exports/one-agency_motion-[concept]_[WxH].zip.
@@ -46,12 +47,14 @@ Folders
   logos/      stacked, horizontal and icon lockups (on dark, on light, white, ink), favicons, social images
   colour/     the live site's colour tokens as CSS and JSON
   fonts/      Geist, Lato and Metal (TTF and WOFF2) with their licences
-  elements/   signature devices, patterns and illustrations (on dark and on light), the Möbius loop stills,
-              halo, glow field, laurel, CTA buttons, proof bar, award badge, icons
+  elements/   signature devices, patterns and illustrations (on dark and on light), the Möbius loop stills
+              (elements/mobius/, not in the full kit), halo, glow field, laurel, CTA buttons, proof bar, award badge, icons
   illustrations/, textures/  glass illustrations (AI-generated in Magnific) and textures (made in code)
   references/ the nine reference ads the glass and texture style comes from
-  vendor/ciq/ credit for the Möbius loop on the kit site (ConversionIQ's key visual, used as supplied)
+  vendor/ciq/ ConversionIQ's README for the Möbius loop, the source of its credit
   templates/  ad templates and sample ads (editable versions live in Magnific)
+  ads/        the creative ads: ten concepts in four sizes, PNG and WebP (not in the full kit). Three of them
+              (technology, results, vacation-ownership) are built on the Möbius loop stills.
   imagery/    starter image library, AI-generated in Magnific (no real people or clients); stand-ins until real client work exists
   motion/     one-motion.js (the motion runtime), HTML5 ad sources, and exports (MP4, GIF, end frames, HTML5 ZIPs)
   copy/       the copy bank (Markdown and JSON)
@@ -60,8 +63,9 @@ Licences
   Geist, Lato and Metal are under the SIL Open Font License 1.1 (see fonts/*_ofl.txt).
   Logos and all other brand assets belong to ONE Agency, LLC. Use them only for ONE Agency work.
   The 2026 ARDY Award belongs to ConversionIQ.ai; say so wherever it appears.
-  The Möbius loop on the kit site (ciq-loop.js) is ConversionIQ's key visual, used as supplied; it is not part of
-  this kit.
+  The Möbius loop is ConversionIQ's key visual, used as supplied: the stills in elements/mobius/ and the three ads
+  in ads/ built on them. Never edit, redraw or recolour it, and credit it wherever it appears:
+  "Möbius loop: ConversionIQ key visual, used as supplied."
 
 Sources
   Colour: ${KIT.liveCss} (pulled ${KIT.liveCssPulled})
@@ -108,14 +112,16 @@ const WEBP_TWIN = /^kit\/illustrations\/(.+)\.webp$/
 const isWebpTwin = (rel, all) => WEBP_TWIN.test(rel) && all.has(rel.replace(/\.webp$/, '.png'))
 /** The Möbius stills: in the elements ZIP, not in the full kit (size). */
 const MOBIUS_STILL = /^kit\/elements\/mobius\//
-const leftOutOfFull = (rel, all) => isWebpTwin(rel, all) || MOBIUS_STILL.test(rel)
-
+/** The creative ads: in the ads ZIP, not in the full kit (size). */
+const CREATIVE_ADS = /^kit\/ads\//
+const leftOutOfFull = (rel, all) => isWebpTwin(rel, all) || MOBIUS_STILL.test(rel) || CREATIVE_ADS.test(rel)
 
 const FULL_NOTE = `
 Full kit only
   Illustrations come as PNG only here, to keep this ZIP under 100 MiB. Their WebP versions are in
   one-agency_kit_glass.zip and on the site.
   The Möbius loop stills (elements/mobius/) are in one-agency_kit_elements.zip and on the site, not here.
+  The creative ads (ads/creative/) are in one-agency_kit_ads.zip and on the site, not here.
 `
 
 const zipEntries = (rels, prefix = '', note = '') => [
@@ -161,4 +167,4 @@ writeFileSync(MANIFEST, `${JSON.stringify(manifest, null, 2)}\n`)
 
 const mb = (n) => `${(n / 1024 / 1024).toFixed(1)} MB`
 for (const g of groups) console.log(`${g.id.padEnd(10)} ${String(g.count).padStart(4)} listed  ${g.zip ? `${mb(g.zip.bytes).padStart(8)} ZIP (${g.zip.files} files)` : '  (empty, no ZIP)'}`)
-console.log(`full kit   ${mb(full.length)} (${fullRels.length} files, ${everything.length - fullRels.length} illustration WebP twins and Möbius stills left out) · ${listed.length} files listed in src/data/assets.generated.json`)
+console.log(`full kit   ${mb(full.length)} (${fullRels.length} files; ${everything.length - fullRels.length} left out: illustration WebP twins, Möbius stills, creative ads) · ${listed.length} files listed in src/data/assets.generated.json`)
